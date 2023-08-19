@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 70px;
+  background-color: #073042;
+}
+
+.header__link {
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.header__link:not(:last-child) {
+  margin-right: 30px;
+}
+
+.header__link:last-child {
+  color: #000;
+  background-color: #3DDC84;
+  border-radius: 3px;
+  padding: 8px 20px;
+}

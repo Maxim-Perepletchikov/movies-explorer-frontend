@@ -1,0 +1,62 @@
+.about-me {
+  padding: 110px 70px 0;
+}
+
+.about-me__title {
+  color: #fff;
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: 400;
+  border-bottom: 1px solid #DADADA;
+  padding: 0 0 23px;
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+
+.about-me__container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 66px;
+}
+
+.about-me__title-name {
+  color: #fff;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+
+.about-me__job {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 18px 0 0;
+}
+
+.about-me__description {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 26px 0 0;
+  max-width: 599px;
+}
+
+.about-me__link {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  margin: 99px 0 0;
+  text-decoration: none;
+}
+
+.about-me__avatar {
+  border-radius: 10px;
+  max-width: 270px;
+  max-height: 327px;
+}

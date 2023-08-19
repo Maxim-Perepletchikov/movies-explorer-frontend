@@ -1,0 +1,81 @@
+.about-project {
+  padding: 110px 70px;
+  max-height: 608px;
+  box-sizing: border-box;
+}
+
+.about-project__title {
+  color: #fff;
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: 400;
+  border-bottom: 1px solid #DADADA;
+  padding: 0 0 23px;
+  margin: 0;
+  letter-spacing: -0.8px;
+}
+
+.two-columns {
+  display: flex;
+  margin: 70px 0 110px;
+}
+
+.two-columns:last-child {
+  margin-top: 110px;
+  margin-bottom: 0;
+}
+
+.two-columns__info:not(:last-child) {
+  margin-right: 40px;
+}
+
+.two-columns__title {
+  color: #fff;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.two-columns__text {
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  margin: 26px 0 0;
+}
+
+
+.two-columns__dev-time {
+  min-width: 228px;
+  text-align: center;
+  width: 100%;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.two-columns__dev-time:first-of-type {
+  max-width: 228px;
+}
+
+.two-columns__dev-time-title {
+  background-color: #3DDC84;
+  color: #000;
+  font-weight: 400;
+  padding: 9px 0 9px;
+  font-size: 14px;
+  margin: 0;
+}
+
+.two-columns__dev-time-title_color_light {
+  background-color: #303030;
+  color: #fff;
+}
+
+.two-columns__dev-time-text {
+  color: #8B8B8B;
+  font-weight: 500;
+  margin: 0;
+  padding: 14px 0 14px;
+}

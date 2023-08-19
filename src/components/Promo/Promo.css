@@ -1,0 +1,47 @@
+.promo {
+  display: flex;
+  justify-content: space-between;
+  background-color: #073042;
+  padding: 75px 70px;
+}
+
+.promo__container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.promo__title {
+  color: #fff;
+  line-height: 58px;
+  font-size: 50px;
+  font-weight: 400;
+  max-width: 640px;
+  margin: 0;
+}
+
+.promo__text {
+  color: #fff;
+  line-height: 16px;
+  font-size: 13px;
+  font-weight: 400;
+  max-width: 310px;
+  padding: 36px 0 0;
+}
+
+.promo__button {
+  color: #fff;
+  font-size: 12px;
+  background-color: #073042;
+  padding: 10px 20px;
+  border-radius: 3px;
+  border-color: #fff;
+  transition: 0.5s;
+  cursor: pointer;
+  margin: 146px 0 0;
+}
+
+.promo__button:hover {
+  opacity: 0.8;
+}
+
