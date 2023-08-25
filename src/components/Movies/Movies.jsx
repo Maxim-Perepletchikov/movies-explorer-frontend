@@ -1,12 +1,16 @@
 import './Movies.css';
+import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import movies from '../../utils/moviesList';
 
 const Movies = () => {
   return (
-    <section className='movies'>
-
+    <section className="movies">
+      <SearchForm />
+      <MoviesCardList movies={movies} />
     </section>
-  )
-}
+  );
+};
 
 export default Movies;
 

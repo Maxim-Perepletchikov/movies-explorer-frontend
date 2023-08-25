@@ -1,0 +1,44 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #222222;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.05);
+}
+
+.card__image {
+  width: 100%;
+  height: 151px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  object-position: center;
+  cursor: pointer;
+}
+
+.card__panel {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 12px 10px;
+}
+
+.card__title {
+  color: #fff;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 206px;
+}
+
+.card__duration {
+  color: #8B8B8B;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  margin: 0;
+  padding: 0 0 14px 12px;
+}
