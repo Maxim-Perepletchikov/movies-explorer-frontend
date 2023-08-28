@@ -22,6 +22,42 @@
   padding: 14px 12px 10px;
 }
 
+.card__favorite-button {
+  box-sizing: border-box;
+  width: 15px;
+  height: 15px;
+  background: rgb(0, 0, 0, 0) url(../../images/favorite-button.svg) center
+    no-repeat;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.card__favorite-button_active {
+  background: #2be080 url(../../images/favorite-button.svg) center no-repeat;
+}
+
+.card__favorite-button:hover {
+  opacity: 0.6;
+}
+
+.card__delete-button {
+  box-sizing: border-box;
+  width: 15px;
+  height: 15px;
+  background: rgb(0, 0, 0, 0) url(../../images/delete-button.svg) center
+    no-repeat;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.card__delete-button:hover {
+  opacity: 0.6;
+}
+
 .card__title {
   color: #fff;
   font-weight: 500;
@@ -35,7 +71,7 @@
 }
 
 .card__duration {
-  color: #8B8B8B;
+  color: #8b8b8b;
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;

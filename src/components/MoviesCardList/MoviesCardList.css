@@ -10,25 +10,6 @@
   gap: 32px 20px;
 }
 
-.card__favorite-button {
-  box-sizing: border-box;
-  width: 15px;
-  height: 15px;
-  background: rgb(0, 0, 0, 0) url(../../images/favorite-button.svg) center no-repeat;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  transition: 0.5s;
-}
-
-.card__favorite-button_active {
-  background: #2BE080 url(../../images/favorite-button.svg) center no-repeat;
-}
-
-.card__favorite-button:hover {
-  opacity: 0.6;
-}
-
 .cards__container-button {
   display: flex;
   justify-content: center;

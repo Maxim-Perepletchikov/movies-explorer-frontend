@@ -8,19 +8,60 @@
 
 .header__link {
   color: #fff;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.header__link:hover {
+  opacity: 0.6;
 }
 
 .header__link:not(:last-child) {
-  margin-right: 30px;
+  margin-right: 16px;
 }
 
-.header__link:last-child {
+.header__link_type_main {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.header__link_type_main:last-child {
   color: #000;
-  background-color: #3DDC84;
+  background-color: #3ddc84;
   border-radius: 3px;
   padding: 8px 20px;
+  margin-left: 14px;
+}
+
+.header_type_auth {
+  background-color: #202020;
+}
+
+.header__link_font_regular {
+  font-weight: 400;
+}
+
+.header__link-auth {
+  display: flex;
+  align-items: center;
+}
+
+.header__link-button {
+  display: block;
+  background-color: #313131;
+  width: 26px;
+  height: 26px;
+  margin-left: -9px;
+  background: #313131 url(../../images/Account-icon.svg) no-repeat center;
+  border-radius: 50%;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.header__link-button:hover {
+  opacity: 0.6;
 }
