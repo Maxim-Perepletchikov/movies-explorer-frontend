@@ -1,18 +1,16 @@
 import './Form.css';
-import { Link } from 'react-router-dom';
-import logo from '../../images/logo.svg';
+import { Link, useLocation } from 'react-router-dom';
 
-const Form = ({ title, children, submit, text, path, link }) => {
+const Form = ({ children, submit, text, path, link }) => {
+  const { pathname } = useLocation();
+  const login = pathname === '/signin' ? 'form__button_pos_margin' : '';
+
   return (
     <section className="form">
       <div className="form__container">
-        <Link to="/" className="form__link">
-          <img className="form__logo" alt="Логотип" src={logo}></img>
-        </Link>
-        <h2 className="form__title">{title}</h2>
         <form className="form__main">
           <div className="form__inputs">{children}</div>
-          <button className="form__button" type="submit">
+          <button className={`form__button ${login}`} type="submit">
             {submit}
           </button>
         </form>

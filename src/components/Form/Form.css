@@ -1,18 +1,10 @@
 .form {
   display: flex;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .form__container {
   min-width: 396px;
-  /* width: 100%; */
-}
-
-.form__title {
-  color: #fff;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
 }
 
 /* .form__main {
@@ -97,4 +89,12 @@
   line-height: 17px;
   font-size: 14px;
   text-decoration: none;
+}
+
+.form__item_invisible {
+  opacity: 0;
+}
+
+.form__button_pos_margin {
+  margin-top: 158px;
 }

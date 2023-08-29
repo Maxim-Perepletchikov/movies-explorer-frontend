@@ -4,9 +4,8 @@ import Form from '../Form/Form';
 const Register = () => {
   return (
     <Form
-      title="Добро пожаловать!"
       submit="Зарегистрироваться"
-      text="Уже зарегистрированы"
+      text="Уже зарегистрированы?"
       path="/signin"
       link="Войти"
     >
