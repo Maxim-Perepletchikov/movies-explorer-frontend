@@ -7,3 +7,9 @@
   background-color: #202020;
 }
 
+@media screen and (max-width: 880px) {
+  .App {
+    max-width: 768px;
+  }
+}
+

@@ -78,3 +78,13 @@
   margin: 0;
   padding: 0 0 14px 12px;
 }
+
+@media screen and (max-width: 950px) {
+  .card__image {
+    height: 190px;
+  }
+
+  .card:nth-of-type(1n+9) {
+    display: none;
+  }
+}

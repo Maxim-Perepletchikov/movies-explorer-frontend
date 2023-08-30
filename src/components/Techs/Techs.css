@@ -18,7 +18,7 @@
   font-size: 22px;
   line-height: 27px;
   font-weight: 400;
-  border-bottom: 1px solid #DADADA;
+  border-bottom: 1px solid #dadada;
   padding: 0 0 23px;
   margin: 0;
   letter-spacing: -0.04em;
@@ -67,4 +67,33 @@
   font-weight: 400;
   letter-spacing: 0.04em;
   margin: 100px 0 0;
+}
+
+@media screen and (max-width: 880px) {
+  .techs {
+    max-height: 567px;
+    padding: 90px 50px;
+  }
+
+  .techs__container {
+    margin-top: 80px;
+  }
+
+  .techs__text {
+    line-height: 18px;
+    font-size: 12px;
+    margin-top: 22px;
+  }
+
+  .techs__items {
+    grid-template-columns: repeat(7, 84px);
+  }
+
+  .techs__item {
+    min-width: 84px;
+    min-height: 57px;
+    margin-top: 83px;
+    line-height: 15px;
+    font-size: 12px;
+  }
 }

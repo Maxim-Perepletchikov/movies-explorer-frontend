@@ -46,3 +46,10 @@
   line-height: 16px;
   font-weight: 400;
 }
+
+@media screen and (max-width: 880px) {
+  .footer {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}

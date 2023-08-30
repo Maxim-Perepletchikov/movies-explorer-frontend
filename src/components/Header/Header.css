@@ -86,3 +86,19 @@
   line-height: 29px;
   margin: 40px 0 0;
 }
+
+@media screen and (max-width: 880px) {
+  .header {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .header__link-button {
+    background-image: url(../../images/burger.svg);
+    border-radius: 0;
+  }
+
+  .header__link {
+    display: none;
+  }
+}

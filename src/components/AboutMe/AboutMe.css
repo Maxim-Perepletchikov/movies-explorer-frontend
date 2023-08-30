@@ -7,7 +7,7 @@
   font-size: 22px;
   line-height: 27px;
   font-weight: 400;
-  border-bottom: 1px solid #DADADA;
+  border-bottom: 1px solid #dadada;
   padding: 0 0 23px;
   margin: 0;
   letter-spacing: -0.04em;
@@ -21,8 +21,8 @@
 
 .about-me__title-name {
   color: #fff;
-  font-size: 50px;
   font-weight: 400;
+  font-size: 50px;
   line-height: 58px;
   margin: 0;
   letter-spacing: -0.04em;
@@ -59,4 +59,37 @@
   border-radius: 10px;
   max-width: 270px;
   max-height: 327px;
+}
+
+@media screen and (max-width: 880px) {
+  .about-me {
+    padding: 90px 50px 0;
+  }
+
+  .about-me__title-name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about-me__job {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 16px;
+  }
+
+  .about-me__description {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 20px;
+    max-width: 364px;
+  }
+
+  .about-me__avatar {
+    max-width: 255px;
+    max-height: 307px;
+  }
+
+  .about-me__link {
+    margin-top: 87px;
+  }
 }

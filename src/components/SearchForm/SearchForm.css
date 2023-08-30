@@ -94,3 +94,17 @@
   line-height: 18px;
   margin: 0 0 0 14px;
 }
+
+@media screen and (max-width: 880px) {
+  .search-form {
+    padding: 80px 30px 61px;
+  }
+
+  .search-form__toggle {
+    flex-direction: row-reverse;
+  }
+
+  .search-form__text {
+    margin: 0 16px 0 0;
+  }
+}

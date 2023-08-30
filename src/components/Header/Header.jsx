@@ -40,7 +40,7 @@ function Header() {
           path="/movies"
           element={
             <>
-              <div>
+              <div >
                 <Link to={'/movies'} className="header__link">
                   Фильмы
                 </Link>

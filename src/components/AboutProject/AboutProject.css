@@ -9,10 +9,10 @@
   font-size: 22px;
   line-height: 27px;
   font-weight: 400;
-  border-bottom: 1px solid #DADADA;
+  border-bottom: 1px solid #dadada;
   padding: 0 0 23px;
   margin: 0;
-  letter-spacing: -0.8px;
+  letter-spacing: -0.04em;
 }
 
 .two-columns {
@@ -34,7 +34,7 @@
   font-size: 20px;
   line-height: 24px;
   font-weight: 400;
-  letter-spacing: -0.8px;
+  letter-spacing: -0.04em;
   margin: 0;
 }
 
@@ -45,7 +45,6 @@
   font-weight: 400;
   margin: 26px 0 0;
 }
-
 
 .two-columns__dev-time {
   min-width: 228px;
@@ -60,7 +59,7 @@
 }
 
 .two-columns__dev-time-title {
-  background-color: #3DDC84;
+  background-color: #3ddc84;
   color: #000;
   font-weight: 400;
   padding: 9px 0 9px;
@@ -74,8 +73,34 @@
 }
 
 .two-columns__dev-time-text {
-  color: #8B8B8B;
+  color: #8b8b8b;
   font-weight: 500;
   margin: 0;
   padding: 14px 0 14px;
+}
+
+@media screen and (max-width: 880px) {
+  .about-project {
+    padding: 90px 50px;
+    max-height: 585px;
+  }
+
+  .two-columns {
+    margin-top: 70px;
+  }
+  
+  .two-columns:last-child {
+    margin-top: -17px;
+  }
+
+  .two-columns__text {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 22px;
+  }
+
+  .two-columns__dev-time:first-of-type {
+    max-width: 140px;
+    min-width: 140px;
+  }
 }
