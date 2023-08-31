@@ -1,7 +1,7 @@
 .not-found {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin: 246px auto auto;
   text-align: center;
 }
 
@@ -29,4 +29,10 @@
   font-size: 14px;
   text-decoration: none;
   margin: 184px 0 0;
+}
+
+@media screen and (max-width: 880px) {
+  .not-found {
+    margin-top: 408px;
+  }
 }

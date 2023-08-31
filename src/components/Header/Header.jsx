@@ -8,11 +8,9 @@ function Header() {
   const auth = pathname !== '/' ? 'header_type_auth' : '';
   const form =
     pathname === '/signup' || pathname === '/signin' ? 'header_type_form' : '';
-  const notFound = pathname === '*' ? 'header_type_error' : '';
-  console.log(pathname);
 
   return (
-    <header className={`header ${auth} ${form} ${notFound}`}>
+    <header className={`header ${auth} ${form}`}>
       <Link to="/">
         <img className="header__logo" src={logo} alt="Логотип"></img>
       </Link>
@@ -23,13 +21,13 @@ function Header() {
             <div>
               <Link
                 to={'/signup'}
-                className="header__link header__link_type_main"
+                className="header__link header__link_type_main header__link_active"
               >
                 Регистрация
               </Link>
               <Link
                 to={'/signin'}
-                className="header__link header__link_type_main"
+                className="header__link header__link_type_main header__link_active"
               >
                 Войти
               </Link>

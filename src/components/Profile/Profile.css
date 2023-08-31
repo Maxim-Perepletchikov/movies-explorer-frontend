@@ -81,3 +81,17 @@
   color: #EE3465;
   font-weight: 500;
 }
+
+@media screen and (max-width: 880px) {
+  .profile {
+    padding-top: 236px;
+  }
+
+  .profile__inputs {
+    margin-top: 96px;
+  }
+
+  .profile__button {
+    margin-top: 210px;
+  }
+}

@@ -24,7 +24,7 @@ const AboutProject = () => {
           </p>
         </div>
       </article>
-      <div className="two-columns">
+      <div className="two-columns two-columns_pos_row">
         <div className="two-columns__dev-time">
           <h3 className='two-columns__dev-time-title'>1 неделя</h3>
           <p className='two-columns__dev-time-text'>Back-end</p>

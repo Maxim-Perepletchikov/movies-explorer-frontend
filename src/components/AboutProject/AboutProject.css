@@ -62,7 +62,7 @@
   background-color: #3ddc84;
   color: #000;
   font-weight: 400;
-  padding: 9px 0 9px;
+  padding: 9px 0;
   font-size: 14px;
   margin: 0;
 }
@@ -76,7 +76,7 @@
   color: #8b8b8b;
   font-weight: 500;
   margin: 0;
-  padding: 14px 0 14px;
+  padding: 14px 0;
 }
 
 @media screen and (max-width: 880px) {
@@ -102,5 +102,83 @@
   .two-columns__dev-time:first-of-type {
     max-width: 140px;
     min-width: 140px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .about-project {
+    padding-left: 18px;
+    padding-right: 18px;
+    max-height: 641px;
+  }
+
+  .about-project__title {
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 28px;
+  }
+
+  .two-columns__text {
+    font-size: 11px;
+    line-height: 18px;
+    margin-top: 16px;
+  }
+
+  .two-columns {
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  
+
+  .two-columns__title {
+    margin-top: 56px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .two-columns__text {
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 16px;
+  }
+
+  .two-columns:last-child {
+    margin-top: 60px;
+    margin-bottom: 0;
+  }
+
+  .two-columns:first-of-type {
+    flex-direction: column;
+  }
+
+  .two-columns__info:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .two-columns__dev-time:first-of-type {
+    max-width: 100px;
+    min-width: 100px;
+  }
+
+  .two-columns__dev-time:last-of-type {
+    min-width: 184px;
+    margin-right: 18px;
+  }
+
+  .two-columns_pos_row:first-of-type {
+    flex-direction: row;
+  }
+
+  .two-columns__dev-time-title {
+    padding: 11px 0;
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .two-columns__dev-time-text {
+    color: #A0A0A0;
+    padding: 10px 0;
+    font-size: 11px;
   }
 }

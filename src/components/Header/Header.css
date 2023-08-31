@@ -6,6 +6,10 @@
   background-color: #073042;
 }
 
+.header:has(+ .not-found) {
+  display: none;
+}
+
 .header__link {
   color: #fff;
   text-decoration: none;
@@ -100,5 +104,20 @@
 
   .header__link {
     display: none;
+  }
+
+  .header__link_active {
+    display: inline;
+  }
+
+  .header_type_form {
+    padding-top: 232px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .header {
+    padding-left: 14px;
+    padding-right: 14px;
   }
 }

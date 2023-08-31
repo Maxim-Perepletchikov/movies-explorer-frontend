@@ -74,3 +74,29 @@
     margin: 92px auto 0;
   }
 }
+
+@media screen and (max-width: 475px) {
+  .promo {
+    padding: 70px 10px 30px;
+  }
+
+  .promo__logo {
+    margin-top: 0;
+    max-width: 210px;
+    max-height: 206px;
+  }
+
+  .promo__title {
+    margin-top: 44px;
+    line-height: 38px;
+    font-size: 27px;
+  }
+
+  .promo__text {
+    margin-top: 24px;
+  }
+
+  .promo__button {
+    margin-top: 80px;
+  }
+}

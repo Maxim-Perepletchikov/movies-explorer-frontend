@@ -93,3 +93,48 @@
     margin-top: 87px;
   }
 }
+
+@media screen and (max-width: 475px) {
+  .about-me {
+    padding: 70px 14px 0;
+  }
+
+  .about-me__title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-me__container {
+    flex-direction: column-reverse;
+    margin-top: 60px;
+  }
+
+  .about-me__avatar {
+    max-width: 292px;
+    max-height: 352px;
+  }
+
+  .about-me__info {
+    margin-top: 40px;
+  }
+
+  .about-me__title-name {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .about-me__job {
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 20px;
+  }
+
+  .about-me__description {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__link {
+    margin-top: 40px;
+  }
+}
