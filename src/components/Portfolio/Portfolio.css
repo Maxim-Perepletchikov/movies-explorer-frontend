@@ -60,3 +60,30 @@
     margin-right: 3px;
   }
 }
+
+@media screen and (max-width: 475px) {
+  .portfolio {
+    padding: 70px 14px;
+  }
+
+  .portfolio-title {
+    color: #A0A0A0;
+    font-size: 14px;
+
+  }
+
+  .portfolio__items {
+    margin-top: 20px;
+  }
+
+  .portfolio__link {
+    font-size: 18px;
+    line-height: 28px;
+
+  }
+
+  .portfolio__arrow-link {
+    margin: auto 0 auto;
+    height: 11px;
+  }
+}

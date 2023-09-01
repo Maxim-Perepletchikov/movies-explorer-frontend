@@ -115,9 +115,22 @@
   }
 }
 
-@media screen and (max-width: 568px) {
+@media screen and (max-width: 475px) {
   .header {
     padding-left: 14px;
     padding-right: 14px;
+  }
+
+  .header__link_type_main {
+    font-size: 10px;
+    line-height: 18px;
+  }
+
+  .header__link:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .header__link_type_main:last-child {
+    padding: 5px 12px;
   }
 }
