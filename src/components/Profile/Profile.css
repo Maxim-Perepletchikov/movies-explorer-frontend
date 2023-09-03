@@ -78,7 +78,7 @@
 
 .profile__button:last-child {
   margin: 0 auto;
-  color: #EE3465;
+  color: #ee3465;
   font-weight: 500;
 }
 
@@ -93,5 +93,35 @@
 
   .profile__button {
     margin-top: 210px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .profile {
+    padding: 70px 30px 40px;
+  }
+
+  .profile__form {
+    min-width: auto;
+    margin: 0;
+  }
+
+  .profile__container-buttons {
+    margin-top: auto;
+  }
+
+  .profile__inputs {
+    margin-top: 80px;
+  }
+
+  .profile__button {
+    margin-top: 379px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .profile__button:last-child {
+    font-size: 12px;
+    line-height: 15px;
   }
 }

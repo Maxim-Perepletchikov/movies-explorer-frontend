@@ -98,3 +98,37 @@
 .form__button_pos_margin {
   margin-top: 158px;
 }
+
+@media screen and (max-width: 475px) {
+  .form {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 0;
+  }
+  
+  .form__container {
+    min-width: 100%;
+  }
+
+  .form__button {
+    margin-top: 159px;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 15px 0;
+  }
+
+  .form__text {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 14px;
+  }
+
+  .form__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .form__button_pos_margin {
+    margin-top: 250px;
+  }
+}

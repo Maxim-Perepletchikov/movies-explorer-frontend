@@ -133,4 +133,15 @@
   .header__link_type_main:last-child {
     padding: 5px 12px;
   }
+
+  .header_type_form {
+    align-items: center;
+    min-width: auto;
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+
+  .header__title {
+    margin-top: 50px;
+  }
 }
