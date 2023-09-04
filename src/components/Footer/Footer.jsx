@@ -10,10 +10,24 @@ const Footer = () => {
         <p className="footer__copyright">&copy; 2023</p>
         <ul className="footer__items">
           <li className="footer__item">
-            <a className="footer__link" href="#1">Яндекс.Практикум</a>
+            <a
+              className="footer__link"
+              href="https://practicum.yandex.ru/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Яндекс.Практикум
+            </a>
           </li>
           <li className="footer__item">
-            <a className="footer__link" href="#1">Github</a>
+            <a
+              className="footer__link"
+              href="https://github.com/Maxim-Perepletchikov"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Github
+            </a>
           </li>
         </ul>
       </div>
