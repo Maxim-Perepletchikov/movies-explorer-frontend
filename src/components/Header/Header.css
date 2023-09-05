@@ -66,7 +66,24 @@
   cursor: pointer;
 }
 
+.header__menu-button {
+  display: block;
+  background-color: #313131;
+  width: 26px;
+  height: 26px;
+  margin-left: -9px;
+  background: #313131 url(../../images/burger.svg) no-repeat center;
+  transition: 0.5s;
+  cursor: pointer;
+  border: none;
+  display: none;
+}
+
 .header__link-button:hover {
+  opacity: 0.6;
+}
+
+.header__menu-button:hover {
   opacity: 0.6;
 }
 
@@ -98,8 +115,11 @@
   }
 
   .header__link-button {
-    background-image: url(../../images/burger.svg);
-    border-radius: 0;
+    display: none;
+  }
+
+  .header__menu-button {
+    /* display: inline; */
   }
 
   .header__link {
