@@ -1,6 +1,7 @@
 import './Header.css';
 import logo from '../../images/logo.svg';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import Navigation from '../Navigation/Navigation';
 
 function Header() {
   const { pathname } = useLocation();
@@ -38,7 +39,7 @@ function Header() {
           path="/movies"
           element={
             <>
-              <div >
+              <div>
                 <Link to={'/movies'} className="header__link">
                   Фильмы
                 </Link>
@@ -54,6 +55,8 @@ function Header() {
                   Аккаунт
                 </Link>
                 <Link to={'/profile'} className="header__link-button"></Link>
+                {/* <button className="header__menu-button" type="button"></button> */}
+                <Navigation />
               </div>
             </>
           }
@@ -78,6 +81,7 @@ function Header() {
                   Аккаунт
                 </Link>
                 <Link to={'/profile'} className="header__link-button"></Link>
+                <Navigation />
               </div>
             </>
           }
@@ -105,6 +109,7 @@ function Header() {
                   Аккаунт
                 </Link>
                 <Link to={'/profile'} className="header__link-button"></Link>
+                <Navigation />
               </div>
             </>
           }
