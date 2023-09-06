@@ -1,7 +1,6 @@
 import './Navigation.css';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import picAcc from '../../images/Account-icon.svg';
 
 const Navigation = () => {
   const [showSidebar, setShowSidebar] = useState(false);
