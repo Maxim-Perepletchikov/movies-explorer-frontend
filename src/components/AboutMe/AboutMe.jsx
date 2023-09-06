@@ -1,5 +1,5 @@
 import './AboutMe.css';
-import avatar from '../../images/avatar.jpg'
+import avatar from '../../images/avatar.jpg';
 
 const AboutMe = () => {
   return (
@@ -16,9 +16,16 @@ const AboutMe = () => {
             Контур». После того, как прошёл курс по веб-разработке, начал
             заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
-          <a className="about-me__link" href="#1">Github</a>
+          <a
+            className="about-me__link"
+            href="https://github.com/Maxim-Perepletchikov"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Github
+          </a>
         </div>
-        <img className='about-me__avatar' src={avatar} alt="Мое фото" />
+        <img className="about-me__avatar" src={avatar} alt="Мое фото" />
       </div>
     </section>
   );

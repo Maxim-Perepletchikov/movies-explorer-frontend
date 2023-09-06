@@ -1,6 +1,7 @@
 import './Navigation.css';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import picAcc from '../../images/Account-icon.svg';
 
 const Navigation = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -41,29 +42,20 @@ const Navigation = () => {
                 </Link>
               </li>
               <li className="navigation__list-item">
-                <NavLink
-                  to="/movies"
-                  className={setActiveMovies}
-                >
+                <NavLink to="/movies" className={setActiveMovies}>
                   Фильмы
                 </NavLink>
               </li>
               <li className="navigation__list-item">
-                <NavLink
-                  to="/saved-movies"
-                  className={setActiveMovies}
-                >
+                <NavLink to="/saved-movies" className={setActiveMovies}>
                   Сохранённые фильмы
                 </NavLink>
               </li>
             </ul>
           </div>
-          <NavLink
-            to="/profile"
-            className={setActiveAccount}
-          >
+          <NavLink to="/profile" className={setActiveAccount}>
             Аккаунт
-            <button className='navigation__link-button'></button>
+            <div className="navigation__link-button"></div>
           </NavLink>
         </div>
       </div>

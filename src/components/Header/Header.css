@@ -10,6 +10,14 @@
   display: none;
 }
 
+.header__logo {
+  transition: 0.5s;
+}
+
+.header__logo:hover {
+  opacity: 0.6;
+}
+
 .header__link {
   color: #fff;
   text-decoration: none;

@@ -1,6 +1,10 @@
 @import url('./vendor/normalize.css');
 @import url('./vendor/fonts/fonts.css');
 
+#root {
+  background-color: #202020;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', Arial, Helvetica, sans-serif;

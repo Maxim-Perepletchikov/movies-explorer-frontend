@@ -60,6 +60,10 @@
     grid-template-columns: 339px 339px;
     gap: 36px 30px;
   }
+
+  .cards__more-button {
+    font-weight: 500;
+  }
 }
 
 @media screen and (max-width: 730px) {

@@ -5,11 +5,15 @@
 
 .form__container {
   min-width: 396px;
+  position: relative;
+  min-height: 400px;
 }
 
-/* .form__main {
-  width: 100%;
-} */
+.form__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .form__item-text {
   color: #8b8b8b;
@@ -31,6 +35,10 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
+}
+
+.form__input:focus {
+  outline: 2px solid #4285f4;
 }
 
 .form__input::placeholder {
@@ -89,6 +97,11 @@
   line-height: 17px;
   font-size: 14px;
   text-decoration: none;
+  transition: 0.5s;
+}
+
+.form__link:hover {
+  opacity: 0.6;
 }
 
 .form__item_invisible {
@@ -105,7 +118,7 @@
     padding-right: 30px;
     margin: 0;
   }
-  
+
   .form__container {
     min-width: 100%;
   }

@@ -17,15 +17,9 @@ const Login = () => {
       </label>
       <label className='form__item'>
         <p className='form__item-text'>Пароль</p>
-        <input className='form__input' type="password" placeholder='' required />
+        <input className='form__input' type="password" placeholder='••••••••••••••' required />
         <p className='form__error'>Что-то пошло не так...</p>
       </label>
-      {/* <label className='form__item form__item_invisible'>
-        <p className='form__item-text'>Имя</p>
-        <input className='form__input' type="text" placeholder='Виталий' required />
-        <p className='form__error'>Что-то пошло не так...</p>
-      </label> */}
-      
     </Form>
   );
 };

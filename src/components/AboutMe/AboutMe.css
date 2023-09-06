@@ -33,7 +33,7 @@
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
-  margin: 18px 0 0;
+  margin: 18px 30px 0 0;
 }
 
 .about-me__description {
@@ -41,7 +41,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
-  margin: 26px 0 0;
+  margin: 26px 30px 0 0;
   max-width: 599px;
 }
 
@@ -53,6 +53,11 @@
   line-height: 17px;
   margin: 99px 0 0;
   text-decoration: none;
+  transition: 0.5s;
+}
+
+.about-me__link:hover {
+  opacity: 0.6;
 }
 
 .about-me__avatar {
@@ -94,7 +99,7 @@
   }
 }
 
-@media screen and (max-width: 475px) {
+@media screen and (max-width: 540px) {
   .about-me {
     padding: 70px 14px 0;
   }
@@ -107,6 +112,7 @@
   .about-me__container {
     flex-direction: column-reverse;
     margin-top: 60px;
+    align-items: center;
   }
 
   .about-me__avatar {
@@ -127,11 +133,13 @@
     font-size: 11px;
     line-height: 16px;
     margin-top: 20px;
+    margin-right: 0;
   }
 
   .about-me__description {
     font-size: 11px;
     line-height: 16px;
+    margin-right: 0;
   }
 
   .about-me__link {

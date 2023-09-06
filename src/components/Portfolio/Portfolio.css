@@ -36,11 +36,21 @@
   font-size: 30px;
   line-height: 50px;
   letter-spacing: -0.04em;
+  transition: 0.5s;
+}
+
+.portfolio__link:hover {
+  opacity: 0.6;
 }
 
 .portfolio__arrow-link {
   display: flex;
   margin-left: auto;
+  transition: 0.5s;
+}
+
+.portfolio__arrow-link:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 880px) {
