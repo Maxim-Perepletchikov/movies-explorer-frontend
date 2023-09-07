@@ -54,6 +54,28 @@
   color: #fff;
 }
 
+.profile_save-button {
+  display: none;
+  margin: 223px auto 0;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.5s;
+  justify-content: center;
+  padding: 15px 0;
+  border: none;
+  border-radius: 3px;
+  background-color: #3456F3;
+  color: #fff;
+}
+
+.profile_save-button:hover {
+  opacity: 0.6;
+}
+
+.profile_save-button_visible {
+  display: flex;
+}
+
 .profile__container-buttons {
   display: flex;
   flex-direction: column;
@@ -70,6 +92,10 @@
   cursor: pointer;
   max-width: 410px;
   margin: 220px auto 16px;
+}
+
+.profile__button_invisible {
+  display: none;
 }
 
 .profile__button:hover {
