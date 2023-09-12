@@ -1,12 +1,12 @@
 import './Form.css';
 import { Link, useLocation } from 'react-router-dom';
 
-const Form = ({ children, submit, text, path, link }) => {
+const Form = ({ children, submit, text, path, link, onSubmit, isValid }) => {
   const { pathname } = useLocation();
   const login = pathname === '/signin' ? 'form__button_pos_margin' : '';
 
   return (
-    <section className="form">
+    <section className="form" onSubmit={onSubmit}>
       <div className="form__container">
         <form className="form__main">
           <div className="form__inputs">{children}</div>
@@ -14,9 +14,9 @@ const Form = ({ children, submit, text, path, link }) => {
             {submit}
           </button>
         </form>
-        <p className='form__text'>
+        <p className="form__text">
           {text}
-          <Link to={path} className='form__link'>
+          <Link to={path} className="form__link">
             {link}
           </Link>
         </p>
