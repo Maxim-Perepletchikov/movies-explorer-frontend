@@ -1,6 +1,7 @@
 .form {
   display: flex;
   margin: 0 auto;
+  max-width: 396px;
 }
 
 .form__container {
@@ -45,7 +46,15 @@
   color: #fff;
 }
 
-.form__input_color-error::placeholder {
+.form__input:focus::placeholder {
+  color: transparent;
+}
+
+/* .form__input_color-error::placeholder {
+  color: #ee3465;
+} */
+
+.form__input_color-error {
   color: #ee3465;
 }
 
@@ -110,6 +119,13 @@
 
 .form__button_pos_margin {
   margin-top: 158px;
+}
+
+.form__button_disable:disabled {
+  color: #C2C2C2;
+  background-color: #F8F8F8;
+  opacity: 1;
+  cursor: auto;
 }
 
 @media screen and (max-width: 475px) {

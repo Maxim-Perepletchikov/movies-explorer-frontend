@@ -31,7 +31,7 @@ class MainApi {
   }
 
   getContent(token) {
-    return fetch(`${this._url}/user/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',

@@ -7,17 +7,50 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
-import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { useCallback, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import mainApi from '../../utils/MainApi';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  const [loggedIn, seLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  function name(params) {
-    
+  const navigate = useNavigate();
+
+  const tokenCheck = useCallback(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      mainApi
+        .getContent(jwt)
+        .then(() => {
+          setLoggedIn(true);
+          // setUserEmail(res.data.email)
+          // navigate('/', { replace: true });
+        })
+        .catch(console.log);
+    }
+  }, []);
+
+  useEffect(() => tokenCheck(), []);
+
+  function handleLogin(values) {
+    console.log(values);
+    mainApi.authorize(values.email, values.password).then((res) => {
+      console.log(res);
+      localStorage.setItem('jwt', res.jwt);
+      setLoggedIn(true);
+      navigate('/movies', { replace: true });
+      console.log('Успешно');
+    });
+  }
+
+  function handleRegister(values) {
+    console.log(values);
+    mainApi.register(values.text, values.email, values.password).then(() => {
+      console.log('Успешно');
+    });
   }
 
   return (
@@ -28,18 +61,33 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route
             path="/movies"
-            element={<ProtectedRoute component={Movies} loggedIn={loggedIn}  />}
+            element={
+              loggedIn ? (
+                <ProtectedRoute component={Movies} loggedIn={loggedIn} />
+              ) : (
+                <Main />
+              )
+            } // Заменить Main
           />
           <Route
             path="/saved-movies"
-            element={<ProtectedRoute component={SavedMovies} />}
+            element={
+              loggedIn ? (
+                <ProtectedRoute component={SavedMovies} loggedIn={loggedIn} />
+              ) : (
+                <Main />
+              )
+            }
           />
           <Route
             path="/profile"
-            element={<ProtectedRoute component={Profile} />}
+            element={<ProtectedRoute component={Profile} loggedIn={loggedIn} />}
           />
-          <Route path="/signup" element={<Register />} />
-          <Route path="/signin" element={<Login />} />
+          <Route
+            path="/signup"
+            element={<Register onRegister={handleRegister} />}
+          />
+          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
