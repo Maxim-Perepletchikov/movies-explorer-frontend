@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Profile.css';
 
-const Profile = () => {
+const Profile = ({ onLogout }) => {
   const [activeButtons, setActiveButtons] = useState(false);
 
   function handleButtons() {
@@ -51,7 +51,7 @@ const Profile = () => {
         </button>
         <button className={`profile__button ${
             activeButtons ? 'profile__button_invisible' : ''
-          }`}>Выйти из аккаунта</button>
+          }`} onClick={onLogout}>Выйти из аккаунта</button>
       </div>
     </section>
   );

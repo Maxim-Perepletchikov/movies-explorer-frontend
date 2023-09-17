@@ -1,14 +1,17 @@
 import './Header.css';
 import logo from '../../images/logo.svg';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import Navigation from '../Navigation/Navigation';
+import NavAuth from '../NavAuth/NavAuth';
+import NavProfile from '../NavProfile/NavProfile';
 
-function Header() {
+function Header({ loggedIn }) {
   const { pathname } = useLocation();
 
-  const auth = pathname !== '/' ? 'header_type_auth' : '';
+  const auth = pathname !== '/' && loggedIn ? 'header_type_auth' : '';
   const form =
-    pathname === '/signup' || pathname === '/signin' ? 'header_type_form' : '';
+    pathname === '/signup' || pathname === '/signin'
+      ? 'header_type_auth header_type_form'
+      : '';
 
   return (
     <header className={`header ${auth} ${form}`}>
@@ -16,103 +19,18 @@ function Header() {
         <img className="header__logo" src={logo} alt="Логотип"></img>
       </Link>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              <Link
-                to={'/signup'}
-                className="header__link header__link_type_main header__link_active"
-              >
-                Регистрация
-              </Link>
-              <Link
-                to={'/signin'}
-                className="header__link header__link_type_main header__link_active"
-              >
-                Войти
-              </Link>
-            </div>
-          }
-        />
+        <Route path="/" element={loggedIn ? <NavProfile /> : <NavAuth />} />
         <Route
           path="/movies"
-          element={
-            <>
-              <div>
-                <Link to={'/movies'} className="header__link">
-                  Фильмы
-                </Link>
-                <Link
-                  to={'/saved-movies'}
-                  className="header__link header__link_font_regular"
-                >
-                  Сохранённые фильмы
-                </Link>
-              </div>
-              <div className="header__link-auth">
-                <Link to={'/profile'} className="header__link">
-                  Аккаунт
-                </Link>
-                <Link to={'/profile'} className="header__link-button"></Link>
-                {/* <button className="header__menu-button" type="button"></button> */}
-                <Navigation />
-              </div>
-            </>
-          }
+          element={loggedIn ? <NavProfile /> : <NavAuth />}
         />
         <Route
           path="/saved-movies"
-          element={
-            <>
-              <div>
-                <Link
-                  to={'/movies'}
-                  className="header__link header__link_font_regular"
-                >
-                  Фильмы
-                </Link>
-                <Link to={'/saved-movies'} className="header__link">
-                  Сохранённые фильмы
-                </Link>
-              </div>
-              <div className="header__link-auth">
-                <Link to={'/profile'} className="header__link">
-                  Аккаунт
-                </Link>
-                <Link to={'/profile'} className="header__link-button"></Link>
-                <Navigation />
-              </div>
-            </>
-          }
+          element={loggedIn ? <NavProfile /> : <NavAuth />}
         />
         <Route
           path="/profile"
-          element={
-            <>
-              <div>
-                <Link
-                  to={'/movies'}
-                  className="header__link header__link_font_regular"
-                >
-                  Фильмы
-                </Link>
-                <Link
-                  to={'/saved-movies'}
-                  className="header__link header__link_font_regular"
-                >
-                  Сохранённые фильмы
-                </Link>
-              </div>
-              <div className="header__link-auth">
-                <Link to={'/profile'} className="header__link">
-                  Аккаунт
-                </Link>
-                <Link to={'/profile'} className="header__link-button"></Link>
-                <Navigation />
-              </div>
-            </>
-          }
+          element={loggedIn ? <NavProfile /> : <NavAuth />}
         />
         <Route
           path="/signup"

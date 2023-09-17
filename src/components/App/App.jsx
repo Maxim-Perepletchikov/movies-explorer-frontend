@@ -46,6 +46,13 @@ function App() {
     });
   }
 
+  function handleLogout() {
+    setLoggedIn(false);
+    localStorage.removeItem('jwt');
+    navigate('/');
+    console.log('Успешный выход');
+  }
+
   function handleRegister(values) {
     console.log(values);
     mainApi.register(values.text, values.email, values.password).then(() => {
@@ -56,7 +63,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
-        <Header />
+        <Header loggedIn={loggedIn} />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route
@@ -81,7 +88,13 @@ function App() {
           />
           <Route
             path="/profile"
-            element={<ProtectedRoute component={Profile} loggedIn={loggedIn} />}
+            element={
+              <ProtectedRoute
+                component={Profile}
+                loggedIn={loggedIn}
+                onLogout={handleLogout}
+              />
+            }
           />
           <Route
             path="/signup"
