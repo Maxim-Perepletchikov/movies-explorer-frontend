@@ -16,8 +16,20 @@ import mainApi from '../../utils/MainApi';
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+  // const [userInfo, setUserInfo] = useState({})
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedIn) {
+      mainApi
+        .getInfoProfile()
+        .then(({ data }) => {
+          setCurrentUser(data);
+        })
+        .catch(console.log);
+    }
+  }, [loggedIn]);
 
   const tokenCheck = useCallback(() => {
     const jwt = localStorage.getItem('jwt');
@@ -37,13 +49,16 @@ function App() {
 
   function handleLogin(values) {
     console.log(values);
-    mainApi.authorize(values.email, values.password).then((res) => {
-      console.log(res);
-      localStorage.setItem('jwt', res.jwt);
-      setLoggedIn(true);
-      navigate('/movies', { replace: true });
-      console.log('Успешно');
-    });
+    mainApi
+      .authorize(values.email, values.password)
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem('jwt', res.jwt);
+        setLoggedIn(true);
+        navigate('/movies', { replace: true });
+        console.log('Успешно');
+      })
+      .catch(console.log);
   }
 
   function handleLogout() {
@@ -56,8 +71,16 @@ function App() {
   function handleRegister(values) {
     console.log(values);
     mainApi.register(values.text, values.email, values.password).then(() => {
-      console.log('Успешно');
+      navigate('/movies');
+      console.log('Успешный вход');
     });
+  }
+
+  function handleUpdateUser(userInfo) {
+    mainApi
+      .setInfoProfile(userInfo)
+      .then(({ data }) => setCurrentUser(data))
+      .catch(console.log);
   }
 
   return (
@@ -93,6 +116,7 @@ function App() {
                 component={Profile}
                 loggedIn={loggedIn}
                 onLogout={handleLogout}
+                onEditProfile={handleUpdateUser}
               />
             }
           />
