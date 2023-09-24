@@ -12,11 +12,12 @@ import { useCallback, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import mainApi from '../../utils/MainApi';
+import moviesApi from '../../utils/MoviesApi';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  // const [userInfo, setUserInfo] = useState({})
+  const [moviesCardList, setMoviesCardList] = useState([])
 
   const navigate = useNavigate();
 
@@ -28,6 +29,14 @@ function App() {
           setCurrentUser(data);
         })
         .catch(console.log);
+
+      moviesApi.getMovies().then(data => {
+        setMoviesCardList(
+          data.map(card => {
+            // Вставить карточки
+          })
+        )
+      })
     }
   }, [loggedIn]);
 
@@ -48,15 +57,13 @@ function App() {
   useEffect(() => tokenCheck(), []);
 
   function handleLogin(values) {
-    console.log(values);
     mainApi
       .authorize(values.email, values.password)
       .then((res) => {
-        console.log(res);
         localStorage.setItem('jwt', res.jwt);
         setLoggedIn(true);
         navigate('/movies', { replace: true });
-        console.log('Успешно');
+        console.log('Успешный вход');
       })
       .catch(console.log);
   }
@@ -72,7 +79,7 @@ function App() {
     console.log(values);
     mainApi.register(values.text, values.email, values.password).then(() => {
       navigate('/movies');
-      console.log('Успешный вход');
+      console.log('Успешная регистрация');
     });
   }
 
@@ -81,6 +88,7 @@ function App() {
       .setInfoProfile(userInfo)
       .then(({ data }) => setCurrentUser(data))
       .catch(console.log);
+      console.log('Успешная редактирование профиля');
   }
 
   return (
@@ -112,12 +120,16 @@ function App() {
           <Route
             path="/profile"
             element={
-              <ProtectedRoute
-                component={Profile}
-                loggedIn={loggedIn}
-                onLogout={handleLogout}
-                onEditProfile={handleUpdateUser}
-              />
+              loggedIn ? (
+                <ProtectedRoute
+                  component={Profile}
+                  loggedIn={loggedIn}
+                  onLogout={handleLogout}
+                  onEditProfile={handleUpdateUser}
+                />
+              ) : (
+                <Main />
+              )
             }
           />
           <Route

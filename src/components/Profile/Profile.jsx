@@ -10,7 +10,7 @@ const Profile = ({ onLogout, onEditProfile }) => {
 
   const currentUser = useContext(CurrentUserContext);
 
-  console.log(currentUser);
+  // console.log(currentUser);
 
   const handleButtons = () => {
     setActiveButtons(!activeButtons);
@@ -43,6 +43,7 @@ const Profile = ({ onLogout, onEditProfile }) => {
               value={values.text || ''}
               onChange={handleChange}
               placeholder="Виталий"
+              disabled={!activeButtons}
               required
             ></input>
           </div>
@@ -56,6 +57,7 @@ const Profile = ({ onLogout, onEditProfile }) => {
               value={values.email || ''}
               onChange={handleChange}
               placeholder="pochta@yandex.ru"
+              disabled={!activeButtons}
               required
             ></input>
           </div>
