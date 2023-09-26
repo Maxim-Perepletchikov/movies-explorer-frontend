@@ -17,7 +17,7 @@ import moviesApi from '../../utils/MoviesApi';
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  const [moviesCardList, setMoviesCardList] = useState([])
+  const [moviesCardList, setMoviesCardList] = useState([]);
 
   const navigate = useNavigate();
 
@@ -30,13 +30,22 @@ function App() {
         })
         .catch(console.log);
 
-      moviesApi.getMovies().then(data => {
+      moviesApi.getMovies().then((data) => {
+        // console.log(data);
+        // console.log(data, typeof data, data[0].description);
         setMoviesCardList(
-          data.map(card => {
-            // Вставить карточки
-          })
-        )
-      })
+          data.map((card) => ({
+            id: card.id,
+            description: card.description,
+            duration: card.duration,
+            nameEN: card.nameEN,
+            nameRU: card.nameRU,
+            trailerLink: card.trailerLink,
+            url: 'https://api.nomoreparties.co' + card.image.url
+          }))
+        );
+        // console.log(moviesCardList);
+      }).catch(console.log);
     }
   }, [loggedIn]);
 
@@ -88,7 +97,7 @@ function App() {
       .setInfoProfile(userInfo)
       .then(({ data }) => setCurrentUser(data))
       .catch(console.log);
-      console.log('Успешная редактирование профиля');
+    console.log('Успешная редактирование профиля');
   }
 
   return (
@@ -101,7 +110,7 @@ function App() {
             path="/movies"
             element={
               loggedIn ? (
-                <ProtectedRoute component={Movies} loggedIn={loggedIn} />
+                <ProtectedRoute component={Movies} loggedIn={loggedIn} movies={moviesCardList} />
               ) : (
                 <Main />
               )

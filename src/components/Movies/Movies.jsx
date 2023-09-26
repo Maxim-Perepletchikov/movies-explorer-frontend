@@ -1,10 +1,10 @@
 import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import movies from '../../utils/moviesList';
+// import movies from '../../utils/moviesList';
 import Footer from '../Footer/Footer';
 
-const Movies = () => {
+const Movies = ({ movies }) => {
   return (
     <>
       <main>

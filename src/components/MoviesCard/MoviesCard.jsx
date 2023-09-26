@@ -9,6 +9,13 @@ const MoviesCard = ({ movie }) => {
     setFavoriteMovie(!favoriteMovie);
   }
 
+  function getTime(minutes) {
+    const hours = Math.trunc(minutes / 60);
+    const mins = minutes % 60;
+
+    return `${hours ? hours + 'ч' : ''}${mins < 10 ? '0' + mins : mins}м`;
+  }
+
   const { pathname } = useLocation();
 
   const cardFavoriteButton = favoriteMovie
@@ -17,9 +24,11 @@ const MoviesCard = ({ movie }) => {
 
   return (
     <article className="card">
-      <img className="card__image" src={movie.image} alt="33 слова о дизайне" />
+      <a href={movie.trailerLink} target="_blank" rel="noreferrer">
+        <img className="card__image" src={movie.url} alt={movie.description} />
+      </a>
       <div className="card__panel">
-        <h2 className="card__title">33 слова о дизайне</h2>
+        <h2 className="card__title">{movie.description}</h2>
         {pathname === '/saved-movies' ? (
           <button
             className="card__delete-button"
@@ -35,7 +44,7 @@ const MoviesCard = ({ movie }) => {
           ></button>
         )}
       </div>
-      <p className="card__duration">1ч42м</p>
+      <p className="card__duration">{getTime(movie.duration)}</p>
     </article>
   );
 };
