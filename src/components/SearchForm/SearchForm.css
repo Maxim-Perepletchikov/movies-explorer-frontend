@@ -60,10 +60,10 @@
 .search-form__slider {
   position: absolute;
   inset: 0;
-  background-color: #3ddc84;
+  background-color: #343434;
   border-radius: 16px;
   transition: 0.6s;
-  transform: scale(-1, -1);
+  /* transform: scale(-1, -1); */
 }
 
 .search-form__slider::before {
@@ -74,16 +74,17 @@
   left: 2px;
   bottom: 2px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #a0a0a0;
 }
 
 .search-form__checkbox:checked + .search-form__slider {
-  background-color: #343434;
+  background-color: #3ddc84;
 }
 
 .search-form__checkbox:checked + .search-form__slider::before {
   transform: translateX(16px);
-  background-color: #a0a0a0;
+  background-color: #fff;
+
 }
 
 .search-form__text {
