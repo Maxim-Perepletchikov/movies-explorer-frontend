@@ -44,7 +44,6 @@ function App() {
             url: 'https://api.nomoreparties.co' + card.image.url
           }))
         );
-        console.log(moviesCardList);
       }).catch(console.log);
     }
   }, [loggedIn]);

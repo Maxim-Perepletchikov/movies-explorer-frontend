@@ -1,10 +1,17 @@
 import './SearchForm.css';
 import '../../images/search-button.svg';
+import { useEffect, useState } from 'react';
 
-const SearchForm = ({ search, setSearch, checkbox, setCheckbox, handleGetMovies }) => {
+const SearchForm = ({
+  search,
+  setSearch,
+  checkbox,
+  setCheckbox,
+  handleGetMovies,
+}) => {
   function handleSubmit(e) {
     e.preventDefault();
-    handleGetMovies(search)
+    handleGetMovies(search);
   }
 
   return (
@@ -15,7 +22,8 @@ const SearchForm = ({ search, setSearch, checkbox, setCheckbox, handleGetMovies 
           type="text"
           placeholder="Фильм"
           value={search}
-          onChange={e => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
+          minLength={1}
           required
         />
         <button
@@ -28,9 +36,9 @@ const SearchForm = ({ search, setSearch, checkbox, setCheckbox, handleGetMovies 
         <label className="search-form__switch">
           <input
             className="search-form__checkbox"
-            type="checkbox" 
+            type="checkbox"
             checked={checkbox}
-            onChange={e => setCheckbox(e.target.checked)}
+            onChange={(e) => setCheckbox(e.target.checked)}
           />
           <span className="search-form__slider"></span>
         </label>

@@ -8,8 +8,6 @@ const MoviesCardList = ({ movies, filteredPosts, checkbox }) => {
   const invisible =
     pathname === '/saved-movies' ? 'cards__more-button_invisible' : '';
 
-  // console.log(movies);
-
   return (
     <section className="cards">
       <article className="cards__movies-list">
