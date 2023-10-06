@@ -48,7 +48,6 @@ const Movies = ({ movies }) => {
 
     console.log(filtered);
     setPosts(() => {
-      console.log(filtered, 'результат');
       localStorage.setItem('posts', JSON.stringify(filtered));
 
       return filtered;
