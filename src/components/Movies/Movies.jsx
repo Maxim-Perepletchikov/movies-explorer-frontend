@@ -20,22 +20,22 @@ const Movies = ({ movies }) => {
     }
 
     // return localStorage.checkbox === 'false' ? false : true
-
+    console.log(checkbox);
     if (checkbox) {
       setFilteredPosts(JSON.parse(localStorage.getItem('filteredPosts')));
       localStorage.setItem('checkbox', true);
+      console.log('тут');
     } else {
       setPosts(JSON.parse(localStorage.getItem('posts')));
-      console.log(JSON.parse(localStorage.getItem('posts')));
       localStorage.setItem('checkbox', false);
     }
   }
 
   function handleGetMovies() {
-    // console.log(movies);
     // localStorage.removeItem('checkbox');
-    localStorage.removeItem('posts');
+    // localStorage.removeItem('posts');
     // localStorage.removeItem('filteredPosts');
+    // localStorage.removeItem('search');
 
     let filtered = movies;
 
@@ -46,29 +46,48 @@ const Movies = ({ movies }) => {
       );
     }
 
-    setPosts(filtered);
     console.log(filtered);
+    setPosts(() => {
+      console.log(filtered, 'результат');
+      localStorage.setItem('posts', JSON.stringify(filtered));
 
-    if (checkbox) {
-      filtered = filtered.filter((movie) => movie.duration < 60);
-    }
+      return filtered;
+    });
 
-    // console.log(filtered);
-    setFilteredPosts(filtered);
+    newFunction(filtered);
 
     localStorage.setItem('checkbox', checkbox);
-    localStorage.setItem('posts', JSON.stringify(posts));
-    localStorage.setItem('filteredPosts', JSON.stringify(filteredPosts));
+    localStorage.setItem('search', JSON.stringify(search));
+  }
+
+  function newFunction(filtered) {
+    if (checkbox) {
+      filtered = filtered.filter((movie) => movie.duration < 60);
+      // localStorage.setItem('checkbox', true);
+    } else {
+      // localStorage.setItem('checkbox', false);
+    }
+
+    setFilteredPosts(() => {
+      localStorage.setItem('filteredPosts', JSON.stringify(filtered));
+      return filtered
+    });
   }
 
   useEffect(() => {
-    handleCheckbox();
-    // handleGetMovies();
+    newFunction(posts)
+    // setPosts(JSON.parse(localStorage.posts))
     // JSON.parse(localStorage.getItem('filteredPosts'))
     // console.log(localStorage.posts);
     // console.log(JSON.parse(localStorage.posts));
     // setFilteredPosts(JSON.parse(localStorage.posts))
+
   }, [checkbox]);
+
+  useEffect(() => {
+    setSearch(JSON.parse(localStorage.search));
+    handleCheckbox();
+  }, []);
 
   return (
     <>
