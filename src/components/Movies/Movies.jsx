@@ -24,10 +24,11 @@ const Movies = ({ movies }) => {
     if (checkbox) {
       setFilteredPosts(JSON.parse(localStorage.getItem('filteredPosts')));
       localStorage.setItem('checkbox', true);
-      console.log('тут');
+      console.log('localStorage => true');
     } else {
       setPosts(JSON.parse(localStorage.getItem('posts')));
       localStorage.setItem('checkbox', false);
+      console.log('localStorage => false');
     }
   }
 
@@ -46,14 +47,31 @@ const Movies = ({ movies }) => {
       );
     }
 
-    console.log(filtered);
     setPosts(() => {
       localStorage.setItem('posts', JSON.stringify(filtered));
 
       return filtered;
     });
 
-    newFunction(filtered);
+    // newFunction(filtered);
+
+    // setFilteredPosts(() => {
+    //   localStorage.setItem('filteredPosts', JSON.stringify(filtered));
+    //   return filtered;
+    // });
+
+    if (checkbox) {
+      filtered = filtered.filter((movie) => movie.duration < 60);
+      localStorage.setItem('checkbox', true);
+    } else {
+      localStorage.setItem('checkbox', false);
+    }
+
+    setFilteredPosts(() => {
+      localStorage.setItem('filteredPosts', JSON.stringify(filtered));
+      console.log(filtered);
+      return filtered;
+    });
 
     localStorage.setItem('checkbox', checkbox);
     localStorage.setItem('search', JSON.stringify(search));
@@ -62,25 +80,24 @@ const Movies = ({ movies }) => {
   function newFunction(filtered) {
     if (checkbox) {
       filtered = filtered.filter((movie) => movie.duration < 60);
-      // localStorage.setItem('checkbox', true);
+      localStorage.setItem('checkbox', true);
+      setFilteredPosts(filtered);
     } else {
-      // localStorage.setItem('checkbox', false);
+      localStorage.setItem('checkbox', false);
+      // console.log(filtered);
+      // setPosts(filtered);
     }
 
-    setFilteredPosts(() => {
-      localStorage.setItem('filteredPosts', JSON.stringify(filtered));
-      return filtered
-    });
+    // setFilteredPosts(() => {
+    //   localStorage.setItem('filteredPosts', JSON.stringify(filtered));
+    //   return filtered;
+    // });
+    // setFilteredPosts(filtered)
   }
 
   useEffect(() => {
-    newFunction(posts)
-    // setPosts(JSON.parse(localStorage.posts))
-    // JSON.parse(localStorage.getItem('filteredPosts'))
-    // console.log(localStorage.posts);
-    // console.log(JSON.parse(localStorage.posts));
-    // setFilteredPosts(JSON.parse(localStorage.posts))
-
+    newFunction(posts);
+    // handleGetMovies()
   }, [checkbox]);
 
   useEffect(() => {
