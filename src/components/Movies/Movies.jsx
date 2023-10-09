@@ -60,8 +60,11 @@ const Movies = ({ movies }) => {
     //   return filtered;
     // });
 
+    // let qwer;
+
     if (checkbox) {
       filtered = filtered.filter((movie) => movie.duration < 60);
+      console.log(filtered);
       localStorage.setItem('checkbox', true);
     } else {
       localStorage.setItem('checkbox', false);
@@ -101,8 +104,8 @@ const Movies = ({ movies }) => {
   }, [checkbox]);
 
   useEffect(() => {
-    setSearch(JSON.parse(localStorage.search));
-    handleCheckbox();
+    setSearch(JSON.parse(localStorage.search)); // Поправить при 
+    handleCheckbox();                           // первой инициализации 
   }, []);
 
   return (
