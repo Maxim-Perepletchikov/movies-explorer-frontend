@@ -2,8 +2,8 @@ import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
-import { useCallback, useEffect, useState } from 'react';
-import moviesApi from '../../utils/MoviesApi';
+import { useEffect, useState } from 'react';
+// import moviesApi from '../../utils/MoviesApi';
 
 const Movies = ({ movies }) => {
   const [posts, setPosts] = useState([]);

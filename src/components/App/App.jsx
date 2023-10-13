@@ -18,6 +18,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [moviesCardList, setMoviesCardList] = useState([]);
+  const [savedMoviesCardList, setSavedMoviesCardList] = useState([]);
 
   const navigate = useNavigate();
 
@@ -30,21 +31,52 @@ function App() {
         })
         .catch(console.log);
 
-      moviesApi.getMovies().then((data) => {
-        // console.log(data);
-        // console.log(data, typeof data, data[0].description);
-        setMoviesCardList(
-          data.map((card) => ({
-            id: card.id,
-            description: card.description,
-            duration: card.duration,
-            nameEN: card.nameEN,
-            nameRU: card.nameRU,
-            trailerLink: card.trailerLink,
-            url: 'https://api.nomoreparties.co' + card.image.url
-          }))
-        );
-      }).catch(console.log);
+      moviesApi
+        .getMovies()
+        .then((data) => {
+          // console.log(data);
+          // console.log(data, typeof data, data[0].description);
+          setMoviesCardList(
+            data.map((card) => ({
+              id: card.id,
+              country: card.country,
+              director: card.director,
+              description: card.description,
+              duration: card.duration,
+              nameEN: card.nameEN,
+              nameRU: card.nameRU,
+              trailerLink: card.trailerLink,
+              image: 'https://api.nomoreparties.co' + card.image.url,
+              thumbnail: 'https://api.nomoreparties.co' + card.image.previewUrl,
+              year: card.year,
+            }))
+          );
+        })
+        .catch(console.log);
+
+      mainApi
+        .getMovies()
+        .then(({data}) => {
+          // console.log(data);
+          setSavedMoviesCardList(
+            data.map((card) => ({
+              id: card._id,
+              country: card.country,
+              director: card.director,
+              description: card.description,
+              duration: card.duration,
+              nameEN: card.nameEN,
+              nameRU: card.nameRU,
+              trailerLink: card.trailerLink,
+              thumbnail: card.thumbnail,
+              image: card.image,
+              owner: card.owner,
+              year: card.year,
+            }))
+          );
+        })
+        .catch(console.log);
+        // console.log(savedMoviesCardList);
     }
   }, [loggedIn]);
 
@@ -109,7 +141,11 @@ function App() {
             path="/movies"
             element={
               loggedIn ? (
-                <ProtectedRoute component={Movies} loggedIn={loggedIn} movies={moviesCardList} />
+                <ProtectedRoute
+                  component={Movies}
+                  loggedIn={loggedIn}
+                  movies={moviesCardList}
+                />
               ) : (
                 <Main />
               )
@@ -119,7 +155,11 @@ function App() {
             path="/saved-movies"
             element={
               loggedIn ? (
-                <ProtectedRoute component={SavedMovies} loggedIn={loggedIn} />
+                <ProtectedRoute
+                  component={SavedMovies}
+                  loggedIn={loggedIn}
+                  movies={savedMoviesCardList}
+                />
               ) : (
                 <Main />
               )

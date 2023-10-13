@@ -23,7 +23,6 @@ const SearchForm = ({
           placeholder="Фильм"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          minLength={1}
           required
         />
         <button
