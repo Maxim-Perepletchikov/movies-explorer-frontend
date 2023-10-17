@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import { useEffect, useState } from 'react';
 // import movies from '../../utils/moviesList';
 
-const SavedMovies = ({ movies }) => {
+const SavedMovies = ({ movies, onFavoriteMovieDelete }) => {
   // const saveMovies = movies.slice(0, 3);
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
@@ -125,6 +125,7 @@ const SavedMovies = ({ movies }) => {
             movies={posts}
             filteredPosts={filteredPosts}
             checkbox={checkbox}
+            onFavoriteMovieDelete={onFavoriteMovieDelete}
           />
         </section>
       </main>

@@ -20,6 +20,8 @@ function App() {
   const [moviesCardList, setMoviesCardList] = useState([]);
   const [savedMoviesCardList, setSavedMoviesCardList] = useState([]);
 
+  const [selectedCard, setSelectedCard] = useState({}); // проверить
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,16 +40,16 @@ function App() {
           // console.log(data, typeof data, data[0].description);
           setMoviesCardList(
             data.map((card) => ({
-              id: card.id,
+              movieId: card.id,
               country: card.country,
               director: card.director,
               description: card.description,
-              duration: card.duration,
+              duration: String(card.duration),
               nameEN: card.nameEN,
               nameRU: card.nameRU,
               trailerLink: card.trailerLink,
               image: 'https://api.nomoreparties.co' + card.image.url,
-              thumbnail: 'https://api.nomoreparties.co' + card.image.previewUrl,
+              thumbnail: 'https://api.nomoreparties.co' + card.image.url,
               year: card.year,
             }))
           );
@@ -56,19 +58,19 @@ function App() {
 
       mainApi
         .getMovies()
-        .then(({data}) => {
+        .then(({ data }) => {
           // console.log(data);
           setSavedMoviesCardList(
             data.map((card) => ({
-              id: card._id,
+              movieId: card._id,
               country: card.country,
               director: card.director,
               description: card.description,
-              duration: card.duration,
+              duration: String(card.duration),
               nameEN: card.nameEN,
               nameRU: card.nameRU,
               trailerLink: card.trailerLink,
-              thumbnail: card.thumbnail,
+              thumbnail: card.image,
               image: card.image,
               owner: card.owner,
               year: card.year,
@@ -76,7 +78,7 @@ function App() {
           );
         })
         .catch(console.log);
-        // console.log(savedMoviesCardList);
+      // console.log(savedMoviesCardList);
     }
   }, [loggedIn]);
 
@@ -131,6 +133,37 @@ function App() {
     console.log('Успешная редактирование профиля');
   }
 
+  // temp
+  function handleCardClick(card) {
+    setSelectedCard(card);
+    console.log(selectedCard);
+  }
+
+  function handleFavoriteMovie(movie) {
+    console.log(movie);
+    // const isFavored = movie.owner === currentUser._id;
+    // console.log(isFavored);
+    // console.log(movie.owner);
+    // mainApi.changeFavoriteMovieStatus(id, isFavored)
+    mainApi
+      .createMovie(movie)
+      .then((movie) =>
+        setSavedMoviesCardList([...savedMoviesCardList, movie.data])
+      )
+      .catch(console.log);
+  }
+
+  function handleFavoriteMovieDelete(movie) {
+    // mainApi
+    //   .deleteMovie(movie.movieId)
+    //   .then(() => {
+    //     setSavedMoviesCardList((state) =>
+    //       state.filter((m) => m.movieId !== movie.movieId)
+    //     );
+    //   })
+    //   .catch(console.log);
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
@@ -145,6 +178,8 @@ function App() {
                   component={Movies}
                   loggedIn={loggedIn}
                   movies={moviesCardList}
+                  onCardClick={handleCardClick}
+                  onFavoriteMovie={handleFavoriteMovie}
                 />
               ) : (
                 <Main />
@@ -159,6 +194,7 @@ function App() {
                   component={SavedMovies}
                   loggedIn={loggedIn}
                   movies={savedMoviesCardList}
+                  onFavoriteMovieDelete={handleFavoriteMovieDelete}
                 />
               ) : (
                 <Main />

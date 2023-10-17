@@ -2,7 +2,7 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
 
-const MoviesCardList = ({ movies, filteredPosts, checkbox }) => {
+const MoviesCardList = ({ movies, filteredPosts, checkbox, onCardClick, onFavoriteMovie, onFavoriteMovieDelete }) => {
   const { pathname } = useLocation();
 
   const invisible =
@@ -12,9 +12,9 @@ const MoviesCardList = ({ movies, filteredPosts, checkbox }) => {
     <section className="cards">
       <article className="cards__movies-list">
         {checkbox
-          ? filteredPosts.map((movie) => <MoviesCard key={movie.id} movie={movie} />)
+          ? filteredPosts.map((movie) => <MoviesCard key={movie.movieId} movie={movie} onCardClick={onCardClick} onFavoriteMovie={onFavoriteMovie} onFavoriteMovieDelete={onFavoriteMovieDelete} />)
           : movies.map((movie) => (
-              <MoviesCard key={movie.id} movie={movie} />
+              <MoviesCard key={movie.movieId} movie={movie} onCardClick={onCardClick} onFavoriteMovie={onFavoriteMovie} onFavoriteMovieDelete={onFavoriteMovieDelete} />
             ))}
       </article>
       <div className="cards__container-button">

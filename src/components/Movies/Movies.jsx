@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import { useEffect, useState } from 'react';
 // import moviesApi from '../../utils/MoviesApi';
 
-const Movies = ({ movies }) => {
+const Movies = ({ movies, onCardClick, onFavoriteMovie }) => {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [search, setSearch] = useState('');
@@ -49,6 +49,7 @@ const Movies = ({ movies }) => {
 
     setPosts(() => {
       localStorage.setItem('posts', JSON.stringify(filtered));
+      // console.log(movies[0], posts[0]);
 
       return filtered;
     });
@@ -72,7 +73,7 @@ const Movies = ({ movies }) => {
 
     setFilteredPosts(() => {
       localStorage.setItem('filteredPosts', JSON.stringify(filtered));
-      console.log(filtered);
+      // console.log(filtered);
       return filtered;
     });
 
@@ -104,8 +105,8 @@ const Movies = ({ movies }) => {
   }, [checkbox]);
 
   useEffect(() => {
-    setSearch(JSON.parse(localStorage.search)); // Поправить при 
-    handleCheckbox();                           // первой инициализации 
+    setSearch(JSON.parse(localStorage.search)); // Поправить при
+    handleCheckbox(); // первой инициализации
   }, []);
 
   return (
@@ -124,6 +125,8 @@ const Movies = ({ movies }) => {
             movies={posts}
             filteredPosts={filteredPosts}
             checkbox={checkbox}
+            onCardClick={onCardClick}
+            onFavoriteMovie={onFavoriteMovie}
           />
         </section>
       </main>

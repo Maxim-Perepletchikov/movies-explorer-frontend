@@ -2,11 +2,21 @@ import React, { useContext } from 'react';
 import './MoviesCard.css';
 import { useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import mainApi from "../../utils/MainApi";
 
-const MoviesCard = ({ movie }) => {
+const MoviesCard = ({ movie, onCardClick, onFavoriteMovie, onFavoriteMovieDelete }) => {
   const [favoriteMovie, setFavoriteMovie] = React.useState(false);
 
-  function handleFavoriteMovie() {
+  function handleClick() {
+    // onCardClick(movie);
+    console.log(movie);
+  }
+
+  function handleFavoriteMovieDelete() {
+    onFavoriteMovieDelete(movie)
+  }
+
+  function handleFavoriteMovie2() {
     setFavoriteMovie(!favoriteMovie);
   }
 
@@ -19,15 +29,19 @@ const MoviesCard = ({ movie }) => {
 
   const { pathname } = useLocation();
 
+  
+  const currentUser = useContext(CurrentUserContext);
+  
+  const isOwn = movie.owner === currentUser._id;
+  
   const cardFavoriteButton = favoriteMovie
     ? 'card__favorite-button card__favorite-button_active'
     : 'card__favorite-button';
 
-  const currentUser = useContext(CurrentUserContext);
-
-  const isOwn = movie.owner === currentUser._id;
-
-  // console.log(movie.owner, currentUser._id);
+  
+    // function handleFavoriteMovie(movie) {
+    //   mainApi.changeFavoriteMovieStatus(movie.id, !isOwn).then()
+    // }
 
   return (
     <article className="card">
@@ -45,11 +59,17 @@ const MoviesCard = ({ movie }) => {
             className="card__delete-button"
             type="button"
             aria-label="Избранное"
+            onClick={handleFavoriteMovieDelete}
           ></button>
         ) : (
           <button
             className={cardFavoriteButton}
-            onClick={handleFavoriteMovie}
+            onClick={() => {
+              handleClick()
+              handleFavoriteMovie2();
+              onFavoriteMovie(movie)
+              // console.log(movie);
+            }}
             type="button"
             aria-label="Избранное"
           ></button>

@@ -67,7 +67,7 @@ class MainApi {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       headers: this._headers,
-    }).then(this._checkResponse)
+    }).then(this._checkResponse);
   }
 
   setInfoProfile(data) {
@@ -76,9 +76,13 @@ class MainApi {
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
-        email: data.email
-      })
-    }).then(this._checkResponse)
+        email: data.email,
+      }),
+    }).then(this._checkResponse);
+  }
+
+  changeFavoriteMovieStatus(id, isFavored) {
+    return isFavored ? this.createMovie(id) : this.deleteMovie(id);
   }
 }
 
