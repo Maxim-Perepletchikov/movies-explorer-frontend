@@ -107,7 +107,8 @@ const SavedMovies = ({ movies, onFavoriteMovieDelete }) => {
   useEffect(() => {
     // setSearch(JSON.parse(localStorage.search)); // Поправить при
     // handleCheckbox(); // первой инициализации
-  }, []);
+    setPosts(movies)
+  }, [movies]);
 
   return (
     <>

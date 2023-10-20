@@ -135,33 +135,37 @@ function App() {
 
   // temp
   function handleCardClick(card) {
-    setSelectedCard(card);
     console.log(selectedCard);
   }
 
   function handleFavoriteMovie(movie) {
-    console.log(movie);
-    // const isFavored = movie.owner === currentUser._id;
-    // console.log(isFavored);
-    // console.log(movie.owner);
-    // mainApi.changeFavoriteMovieStatus(id, isFavored)
+    // console.log(movie);
+
     mainApi
       .createMovie(movie)
       .then((movie) =>
         setSavedMoviesCardList([...savedMoviesCardList, movie.data])
       )
       .catch(console.log);
+
+    // const isFavored = movie.owner === currentUser._id;
+    // mainApi
+    //   .changeFavoriteMovieStatus(movie.movieId, !isFavored)
+    //   // .then()
+    //   .catch(console.log);
   }
 
   function handleFavoriteMovieDelete(movie) {
-    // mainApi
-    //   .deleteMovie(movie.movieId)
-    //   .then(() => {
-    //     setSavedMoviesCardList((state) =>
-    //       state.filter((m) => m.movieId !== movie.movieId)
-    //     );
-    //   })
-    //   .catch(console.log);
+    console.log(movie);
+
+    mainApi
+      .deleteMovie(movie._id || movie.movieId)
+      .then(() => {
+        setSavedMoviesCardList((state) =>
+          state.filter((m) => m._id !== movie._id || m.movieId !== movie.movieId)
+        );
+      })
+      .catch(console.log);
   }
 
   return (
@@ -178,6 +182,7 @@ function App() {
                   component={Movies}
                   loggedIn={loggedIn}
                   movies={moviesCardList}
+                  savedMovies={savedMoviesCardList}
                   onCardClick={handleCardClick}
                   onFavoriteMovie={handleFavoriteMovie}
                 />

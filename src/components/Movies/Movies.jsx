@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import { useEffect, useState } from 'react';
 // import moviesApi from '../../utils/MoviesApi';
 
-const Movies = ({ movies, onCardClick, onFavoriteMovie }) => {
+const Movies = ({ movies, onCardClick, onFavoriteMovie, savedMovies }) => {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [search, setSearch] = useState('');
@@ -99,15 +99,15 @@ const Movies = ({ movies, onCardClick, onFavoriteMovie }) => {
     // setFilteredPosts(filtered)
   }
 
-  useEffect(() => {
-    newFunction(posts);
-    // handleGetMovies()
-  }, [checkbox]);
+  // useEffect(() => {
+  //   newFunction(posts);
+  //   // handleGetMovies()
+  // }, [checkbox]);
 
-  useEffect(() => {
-    setSearch(JSON.parse(localStorage.search)); // Поправить при
-    handleCheckbox(); // первой инициализации
-  }, []);
+  // useEffect(() => {
+  //   setSearch(JSON.parse(localStorage.search));  // Поправить при
+  //   handleCheckbox();                            // первой инициализации
+  // }, []);
 
   return (
     <>
@@ -123,6 +123,7 @@ const Movies = ({ movies, onCardClick, onFavoriteMovie }) => {
           />
           <MoviesCardList
             movies={posts}
+            savedMovies={savedMovies}
             filteredPosts={filteredPosts}
             checkbox={checkbox}
             onCardClick={onCardClick}

@@ -1,19 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './MoviesCard.css';
 import { useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import mainApi from "../../utils/MainApi";
+import mainApi from '../../utils/MainApi';
 
-const MoviesCard = ({ movie, onCardClick, onFavoriteMovie, onFavoriteMovieDelete }) => {
+const MoviesCard = ({
+  movie,
+  onCardClick,
+  onFavoriteMovie,
+  onFavoriteMovieDelete,
+  savedMovies
+}) => {
   const [favoriteMovie, setFavoriteMovie] = React.useState(false);
 
+  const currentUser = useContext(CurrentUserContext);
+
+  // const favorite = savedMovies.filter(film => film.nameRu === movie.nameRu)
+  // console.log(favorite);
+
+  
   function handleClick() {
     // onCardClick(movie);
     console.log(movie);
   }
 
   function handleFavoriteMovieDelete() {
-    onFavoriteMovieDelete(movie)
+    onFavoriteMovieDelete(movie);
   }
 
   function handleFavoriteMovie2() {
@@ -29,19 +41,11 @@ const MoviesCard = ({ movie, onCardClick, onFavoriteMovie, onFavoriteMovieDelete
 
   const { pathname } = useLocation();
 
-  
-  const currentUser = useContext(CurrentUserContext);
-  
-  const isOwn = movie.owner === currentUser._id;
-  
+  // const isOwn = movie.owner === currentUser._id;
+
   const cardFavoriteButton = favoriteMovie
     ? 'card__favorite-button card__favorite-button_active'
     : 'card__favorite-button';
-
-  
-    // function handleFavoriteMovie(movie) {
-    //   mainApi.changeFavoriteMovieStatus(movie.id, !isOwn).then()
-    // }
 
   return (
     <article className="card">
@@ -59,19 +63,19 @@ const MoviesCard = ({ movie, onCardClick, onFavoriteMovie, onFavoriteMovieDelete
             className="card__delete-button"
             type="button"
             aria-label="Избранное"
-            onClick={handleFavoriteMovieDelete}
+            onClick={handleFavoriteMovieDelete/* ()=> {console.log(movie._id)} */}
           ></button>
         ) : (
           <button
             className={cardFavoriteButton}
             onClick={() => {
-              handleClick()
+              handleClick();
               handleFavoriteMovie2();
-              onFavoriteMovie(movie)
-              // console.log(movie);
+              onFavoriteMovie(movie);
+              console.log(movie);
             }}
             type="button"
-            aria-label="Избранное"
+            aria-label="Удаление из избранного"
           ></button>
         )}
       </div>
