@@ -185,6 +185,7 @@ function App() {
                   savedMovies={savedMoviesCardList}
                   onCardClick={handleCardClick}
                   onFavoriteMovie={handleFavoriteMovie}
+                  onFavoriteMovieDelete={handleFavoriteMovieDelete}
                 />
               ) : (
                 <Main />

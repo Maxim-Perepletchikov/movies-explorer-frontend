@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import { useEffect, useState } from 'react';
 // import moviesApi from '../../utils/MoviesApi';
 
-const Movies = ({ movies, onCardClick, onFavoriteMovie, savedMovies }) => {
+const Movies = ({ movies, onCardClick, onFavoriteMovie, savedMovies, onFavoriteMovieDelete }) => {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [search, setSearch] = useState('');
@@ -130,6 +130,7 @@ const Movies = ({ movies, onCardClick, onFavoriteMovie, savedMovies }) => {
             checkbox={checkbox}
             onCardClick={onCardClick}
             onFavoriteMovie={onFavoriteMovie}
+            onFavoriteMovieDelete={onFavoriteMovieDelete}
           />
         </section>
       </main>

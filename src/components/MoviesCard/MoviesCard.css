@@ -84,15 +84,15 @@
     height: 190px;
   }
 
-  .card:nth-of-type(1n+9) {
+  /* .card:nth-of-type(1n+9) {
     display: none;
-  }
+  } */
 }
 
 @media screen and (max-width: 475px) {
-  .card:nth-of-type(1n+6) {
+  /* .card:nth-of-type(1n+6) {
     display: none;
-  }
+  } */
 
   .card__image {
     height: 168px;

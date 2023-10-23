@@ -1,37 +1,28 @@
 import React, { useContext, useEffect } from 'react';
 import './MoviesCard.css';
 import { useLocation } from 'react-router-dom';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import mainApi from '../../utils/MainApi';
 
 const MoviesCard = ({
   movie,
   onCardClick,
   onFavoriteMovie,
   onFavoriteMovieDelete,
-  savedMovies
+  savedMovies,
 }) => {
-  const [favoriteMovie, setFavoriteMovie] = React.useState(false);
+  const isFavorite = savedMovies.some((m) => m.nameRU === movie.nameRU);
+  const movieDel = savedMovies.filter((m) => m.nameRU === movie.nameRU);
 
-  const currentUser = useContext(CurrentUserContext);
-
-  // const favorite = savedMovies.filter(film => film.nameRu === movie.nameRu)
-  // console.log(favorite);
-
-  const boo = savedMovies.some(m => m.nameRU === movie.nameRU)
-  console.log(boo);
-  
   function handleClick() {
     // onCardClick(movie);
     console.log(movie);
   }
 
   function handleFavoriteMovieDelete() {
-    onFavoriteMovieDelete(movie);
+    onFavoriteMovieDelete(movieDel[0]);
   }
 
-  function handleFavoriteMovie2() {
-    setFavoriteMovie(!favoriteMovie);
+  function handleFavoriteMovie() {
+    onFavoriteMovie(movie);
   }
 
   function getTime(minutes) {
@@ -43,9 +34,7 @@ const MoviesCard = ({
 
   const { pathname } = useLocation();
 
-  // const isOwn = movie.owner === currentUser._id;
-
-  const cardFavoriteButton = boo 
+  const cardFavoriteButton = isFavorite
     ? 'card__favorite-button card__favorite-button_active'
     : 'card__favorite-button';
 
@@ -65,16 +54,13 @@ const MoviesCard = ({
             className="card__delete-button"
             type="button"
             aria-label="Избранное"
-            onClick={handleFavoriteMovieDelete/* ()=> {console.log(movie._id)} */}
+            onClick={handleFavoriteMovieDelete}
           ></button>
         ) : (
           <button
             className={cardFavoriteButton}
             onClick={() => {
-              handleClick();
-              handleFavoriteMovie2();
-              onFavoriteMovie(movie);
-              console.log(movie);
+              isFavorite ? handleFavoriteMovieDelete() : handleFavoriteMovie();
             }}
             type="button"
             aria-label="Удаление из избранного"

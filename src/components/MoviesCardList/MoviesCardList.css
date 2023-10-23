@@ -12,9 +12,9 @@
   transition: 0.5s;
 }
 
-.cards__movies-list:nth-child(4) {
+/* .cards__movies-list:nth-child(4) {
   display: none;
-}
+} */
 
 .cards__container-button {
   display: flex;
@@ -38,7 +38,8 @@
 }
 
 .cards__more-button_invisible {
-  opacity: 0;
+  /* opacity: 0; */
+  display: none;
 }
 
 .cards__more-button:hover {

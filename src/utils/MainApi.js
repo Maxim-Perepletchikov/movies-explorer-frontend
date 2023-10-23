@@ -80,10 +80,6 @@ class MainApi {
       }),
     }).then(this._checkResponse);
   }
-
-  changeFavoriteMovieStatus(id, isFavored) {
-    return isFavored ? this.createMovie(id) : this.deleteMovie(id);
-  }
 }
 
 const mainApi = new MainApi({
