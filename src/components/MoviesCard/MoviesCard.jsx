@@ -18,6 +18,8 @@ const MoviesCard = ({
   // const favorite = savedMovies.filter(film => film.nameRu === movie.nameRu)
   // console.log(favorite);
 
+  const boo = savedMovies.some(m => m.nameRU === movie.nameRU)
+  console.log(boo);
   
   function handleClick() {
     // onCardClick(movie);
@@ -43,7 +45,7 @@ const MoviesCard = ({
 
   // const isOwn = movie.owner === currentUser._id;
 
-  const cardFavoriteButton = favoriteMovie
+  const cardFavoriteButton = boo 
     ? 'card__favorite-button card__favorite-button_active'
     : 'card__favorite-button';
 

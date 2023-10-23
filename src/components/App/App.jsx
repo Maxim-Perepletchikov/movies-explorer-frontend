@@ -200,6 +200,7 @@ function App() {
                   loggedIn={loggedIn}
                   movies={savedMoviesCardList}
                   onFavoriteMovieDelete={handleFavoriteMovieDelete}
+                  savedMovies={savedMoviesCardList}
                 />
               ) : (
                 <Main />

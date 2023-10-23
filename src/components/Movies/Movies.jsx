@@ -14,6 +14,8 @@ const Movies = ({ movies, onCardClick, onFavoriteMovie, savedMovies }) => {
     // false
   );
 
+  // console.log(savedMovies.map((m) => m.nameRU));
+
   function handleCheckbox() {
     if (!localStorage.checkbox) {
       localStorage.setItem('checkbox', false);
