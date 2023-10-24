@@ -73,7 +73,7 @@
 .profile__cancel-button {
   color: #ee3465;
   font-weight: 500;
-  width: 100%;
+  margin: 16px auto 0;
   border: none;
   background-color: rgba(0, 0, 0, 0);
   font-weight: 400;
@@ -83,8 +83,6 @@
   cursor: pointer;
   max-width: 410px;
   display: none;
-  justify-content: space-around;
-  margin-top: 16px;
 }
 
 .profile__cancel-button:hover {
@@ -94,6 +92,7 @@
 .profile__save-button_disabled {
   background-color: #f8f8f8;
   color: #c2c2c2;
+  cursor: auto;
 }
 
 .profile_save-button:hover {
