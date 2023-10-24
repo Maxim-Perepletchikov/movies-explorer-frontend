@@ -8,6 +8,8 @@ const MoviesCard = ({
   onFavoriteMovie,
   onFavoriteMovieDelete,
   savedMovies,
+
+  setLoaded
 }) => {
   const isFavorite = savedMovies.some((m) => m.nameRU === movie.nameRU);
   const movieDel = savedMovies.filter((m) => m.nameRU === movie.nameRU);

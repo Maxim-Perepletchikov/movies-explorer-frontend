@@ -5,7 +5,13 @@ import Footer from '../Footer/Footer';
 import { useEffect, useState } from 'react';
 // import moviesApi from '../../utils/MoviesApi';
 
-const Movies = ({ movies, onCardClick, onFavoriteMovie, savedMovies, onFavoriteMovieDelete }) => {
+const Movies = ({
+  movies,
+  onCardClick,
+  onFavoriteMovie,
+  savedMovies,
+  onFavoriteMovieDelete,
+}) => {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [search, setSearch] = useState('');
@@ -14,7 +20,7 @@ const Movies = ({ movies, onCardClick, onFavoriteMovie, savedMovies, onFavoriteM
     // false
   );
 
-  // console.log(savedMovies.map((m) => m.nameRU));
+  // const [numberOfCards, setNumberOfCards] = useState(0);
 
   function handleCheckbox() {
     if (!localStorage.checkbox) {
@@ -66,7 +72,7 @@ const Movies = ({ movies, onCardClick, onFavoriteMovie, savedMovies, onFavoriteM
     // let qwer;
 
     if (checkbox) {
-      filtered = filtered.filter((movie) => movie.duration < 60);
+      filtered = filtered.filter((movie) => movie.duration < 40);
       console.log(filtered);
       localStorage.setItem('checkbox', true);
     } else {
@@ -81,11 +87,12 @@ const Movies = ({ movies, onCardClick, onFavoriteMovie, savedMovies, onFavoriteM
 
     localStorage.setItem('checkbox', checkbox);
     localStorage.setItem('search', JSON.stringify(search));
+    // setNumberOfCards()
   }
 
   function newFunction(filtered) {
     if (checkbox) {
-      filtered = filtered.filter((movie) => movie.duration < 60);
+      filtered = filtered.filter((movie) => movie.duration < 40);
       localStorage.setItem('checkbox', true);
       setFilteredPosts(filtered);
     } else {
@@ -131,7 +138,9 @@ const Movies = ({ movies, onCardClick, onFavoriteMovie, savedMovies, onFavoriteM
             onCardClick={onCardClick}
             onFavoriteMovie={onFavoriteMovie}
             onFavoriteMovieDelete={onFavoriteMovieDelete}
-          />
+            // numberOfCards={numberOfCards}
+            // setNumberOfCards={setNumberOfCards}
+          /> 
         </section>
       </main>
       <Footer />

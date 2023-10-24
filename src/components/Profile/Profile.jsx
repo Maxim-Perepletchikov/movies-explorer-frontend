@@ -5,12 +5,16 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 const Profile = ({ onLogout, onEditProfile }) => {
   const [activeButtons, setActiveButtons] = useState(false);
+
   const { values, errors, isValid, setValues, handleChange } =
     useFormWithValidation();
 
   const currentUser = useContext(CurrentUserContext);
 
-  // console.log(currentUser);
+  const disabled =
+    currentUser.name === values.text && currentUser.email === values.email;
+  const disabledButton = disabled ? 'profile__save-button_disabled' : '';
+  // console.log(values);
 
   const handleButtons = () => {
     setActiveButtons(!activeButtons);
@@ -65,11 +69,21 @@ const Profile = ({ onLogout, onEditProfile }) => {
         <button
           className={`profile_save-button ${
             activeButtons ? 'profile_save-button_visible' : ''
-          }`}
+          } ${disabledButton}`}
           onClick={handleButtons}
           type="submit"
+          disabled={disabled}
         >
           Сохранить
+        </button>
+        <button
+          className={`profile__cancel-button ${
+            activeButtons ? 'profile_save-button_visible' : ''
+          }`}
+          onClick={handleButtons}
+          type='button'
+        >
+          Отмена
         </button>
       </form>
       <div className="profile__container-buttons">
@@ -78,6 +92,7 @@ const Profile = ({ onLogout, onEditProfile }) => {
             activeButtons ? 'profile__button_invisible' : ''
           }`}
           onClick={handleButtons}
+          type="button"
         >
           Редактировать
         </button>

@@ -64,7 +64,7 @@ const SavedMovies = ({ movies, onFavoriteMovieDelete, savedMovies }) => {
     // let qwer;
 
     if (checkbox) {
-      filtered = filtered.filter((movie) => movie.duration < 60);
+      filtered = filtered.filter((movie) => movie.duration < 40);
       console.log(filtered);
       localStorage.setItem('checkbox', true);
     } else {
@@ -83,7 +83,7 @@ const SavedMovies = ({ movies, onFavoriteMovieDelete, savedMovies }) => {
 
   function newFunction(filtered) {
     if (checkbox) {
-      filtered = filtered.filter((movie) => movie.duration < 60);
+      filtered = filtered.filter((movie) => movie.duration < 40);
       // localStorage.setItem('checkbox', true);
       setFilteredPosts(filtered);
     } else {

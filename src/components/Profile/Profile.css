@@ -54,6 +54,8 @@
   color: #fff;
 }
 
+
+
 .profile_save-button {
   display: none;
   margin: 223px auto 0;
@@ -64,12 +66,42 @@
   padding: 15px 0;
   border: none;
   border-radius: 3px;
-  background-color: #3456F3;
+  background-color: #3456f3;
   color: #fff;
+}
+
+.profile__cancel-button {
+  color: #ee3465;
+  font-weight: 500;
+  width: 100%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  transition: 0.5s;
+  cursor: pointer;
+  max-width: 410px;
+  display: none;
+  justify-content: space-around;
+  margin-top: 16px;
+}
+
+.profile__cancel-button:hover {
+  opacity: 0.6;
+}
+
+.profile__save-button_disabled {
+  background-color: #f8f8f8;
+  color: #c2c2c2;
 }
 
 .profile_save-button:hover {
   opacity: 0.6;
+}
+
+.profile_save-button:disabled:hover {
+  opacity: 1;
 }
 
 .profile_save-button_visible {
@@ -106,7 +138,10 @@
   margin: 0 auto;
   color: #ee3465;
   font-weight: 500;
+  width: 100%;
 }
+
+
 
 @media screen and (max-width: 880px) {
   .profile {

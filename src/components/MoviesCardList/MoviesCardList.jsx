@@ -2,6 +2,7 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import spinner from '../../images/loading-loading-forever.gif'
 
 const MoviesCardList = ({
   movies,
@@ -11,6 +12,8 @@ const MoviesCardList = ({
   onFavoriteMovie,
   onFavoriteMovieDelete,
   savedMovies,
+  // numberOfCards,
+  // setNumberOfCards,
 }) => {
   const [numberOfCards, setNumberOfCards] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -37,7 +40,7 @@ const MoviesCardList = ({
       : '';
 
   useEffect(() => {
-    console.log(numberOfCards);
+    initialCard();
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }
@@ -46,9 +49,9 @@ const MoviesCardList = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    initialCard();
-  }, [windowWidth]);
+  // useEffect(() => {
+  //   initialCard();
+  // }, []);
 
   return (
     <section
@@ -58,6 +61,7 @@ const MoviesCardList = ({
       // }}
     >
       <article className="cards__movies-list">
+
         {checkbox
           ? filteredPosts
               .slice(0, numberOfCards)
@@ -73,7 +77,7 @@ const MoviesCardList = ({
               ))
           : movies
               .slice(0, numberOfCards)
-              .map((movie) => (
+              .map((movie) => ( 
                 <MoviesCard
                   key={movie.movieId}
                   movie={movie}
@@ -81,8 +85,8 @@ const MoviesCardList = ({
                   onFavoriteMovie={onFavoriteMovie}
                   onFavoriteMovieDelete={onFavoriteMovieDelete}
                   savedMovies={savedMovies}
-                />
-              ))}
+                /> 
+              ))} 
       </article>
       <div className="cards__container-button">
         <button

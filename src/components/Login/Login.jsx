@@ -31,7 +31,7 @@ const Login = ({ onLogin }) => {
           name="email"
           value={values.email || ''}
           onChange={handleChange}
-          pattern="[A-z0-9!#$%&'*+-/=?^_`{|]{1,64}@[A-z0-9-.]{2,253}\\.[A-z]{2,63}"
+          // pattern="[A-z0-9!#$%&'*+-/=?^_`{|]{1,64}@[A-z0-9-.]{2,253}\\.[A-z]{2,63}"
           placeholder="pochta@yandex.ru"
           required
         />
