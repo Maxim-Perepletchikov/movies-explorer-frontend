@@ -46,7 +46,7 @@ const Login = ({ onLogin }) => {
           name="password"
           value={values.password || ''}
           onChange={handleChange}
-          // pattern="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? ]).*$"
+          pattern="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? ]).*$"
           placeholder="••••••••••••••"
           required
         />
