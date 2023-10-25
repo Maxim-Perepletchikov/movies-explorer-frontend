@@ -50,7 +50,7 @@ const Login = ({ onLogin }) => {
           placeholder="••••••••••••••"
           required
         />
-        <p className={`form__error ${errorPassword}`}>Что-то пошло не так...</p>
+        <p className={`form__error ${errorPassword}`}>{errors.password || 'Что то пошло не так...'}</p>
       </label>
     </Form>
   );
