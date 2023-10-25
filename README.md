@@ -1,4 +1,4 @@
-Ссылка на pull request: 
+Ссылка на pull request: https://github.com/Maxim-Perepletchikov/movies-explorer-frontend/pull/2
 
 ## Ссылки на проект
 
