@@ -7,7 +7,7 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -20,7 +20,7 @@ function App() {
   const [moviesCardList, setMoviesCardList] = useState([]);
   const [savedMoviesCardList, setSavedMoviesCardList] = useState([]);
 
-  const [selectedCard, setSelectedCard] = useState({}); // проверить
+  // const [selectedCard, setSelectedCard] = useState({}); // проверить
 
   const navigate = useNavigate();
 
@@ -135,7 +135,7 @@ function App() {
 
   // temp
   function handleCardClick(card) {
-    console.log(selectedCard);
+    // console.log(selectedCard);
   }
 
   function handleFavoriteMovie(movie) {
