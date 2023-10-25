@@ -112,7 +112,8 @@ function App() {
 
   function handleLogout() {
     setLoggedIn(false);
-    localStorage.removeItem('jwt');
+    // localStorage.removeItem('jwt');
+    localStorage.clear();
     navigate('/');
     console.log('Успешный выход');
   }
