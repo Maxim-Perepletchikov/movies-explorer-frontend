@@ -10,8 +10,10 @@ const Register = ({ onRegister }) => {
     onRegister(values);
   };
 
+  const errorUser = errors.text ? 'form__error_visible' : '';
   const errorEmail = errors.email ? 'form__error_visible' : '';
   const errorPassword = errors.password ? 'form__error_visible' : '';
+  // console.log(values);
 
   return (
     <Form
@@ -31,11 +33,11 @@ const Register = ({ onRegister }) => {
           name="text"
           value={values.text || ''}
           onChange={handleChange}
-          // pattern=''
+          pattern="[a-zA-Z0-9А-я]+"
           placeholder="Виталий"
           required
         />
-        <p className="form__error">Что-то пошло не так...</p>
+        <p className={`form__error ${errorUser}`}>{errors.text || 'Что то пошло не так...'}</p>
       </label>
       <label className="form__item">
         <p className="form__item-text">E-mail</p>
@@ -47,9 +49,10 @@ const Register = ({ onRegister }) => {
           value={values.email || ''}
           onChange={handleChange}
           placeholder="pochta@yandex.ru"
+          pattern='^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$'
           required
         />
-        <p className={`form__error ${errorEmail}`}>{errors.email || 'error'}</p>
+        <p className={`form__error ${errorEmail}`}>{errors.email || 'Что то пошло не так...'}</p>
       </label>
       <label className="form__item">
         <p className="form__item-text">Пароль</p>
@@ -61,10 +64,11 @@ const Register = ({ onRegister }) => {
           value={values.password || ''}
           onChange={handleChange}
           placeholder="••••••••••••••"
+          pattern="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? ]).*$"
           required
         />
-        <p className="form__error">
-          {errors.name || ''}
+        <p className={`form__error ${errorPassword}`}>
+          {errors.password || 'Что то пошло не так...'}
         </p>
       </label>
     </Form>

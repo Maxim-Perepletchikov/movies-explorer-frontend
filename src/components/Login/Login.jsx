@@ -31,11 +31,11 @@ const Login = ({ onLogin }) => {
           name="email"
           value={values.email || ''}
           onChange={handleChange}
-          // pattern="[A-z0-9!#$%&'*+-/=?^_`{|]{1,64}@[A-z0-9-.]{2,253}\\.[A-z]{2,63}"
+          pattern='^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$'
           placeholder="pochta@yandex.ru"
           required
         />
-        <p className={`form__error ${errorEmail}`}>{errors.email || ''}</p>
+        <p className={`form__error ${errorEmail}`}>{errors.email || 'Что то пошло не так...'}</p>
       </label>
       <label className="form__item">
         <p className="form__item-text">Пароль</p>
@@ -46,7 +46,7 @@ const Login = ({ onLogin }) => {
           name="password"
           value={values.password || ''}
           onChange={handleChange}
-          // pattern="(?=.*[A-z])(?=.*\\d)(?=.*[!@#$%^&*])(?=.{8,}).*"
+          // pattern="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? ]).*$"
           placeholder="••••••••••••••"
           required
         />

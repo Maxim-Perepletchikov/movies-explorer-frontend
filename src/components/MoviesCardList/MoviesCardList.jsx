@@ -2,7 +2,7 @@ import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import spinner from '../../images/loading-loading-forever.gif'
+import spinner from '../../images/loading-loading-forever.gif';
 
 const MoviesCardList = ({
   movies,
@@ -35,7 +35,9 @@ const MoviesCardList = ({
   }
 
   const invisible =
-    pathname === '/saved-movies' || numberOfCards >= movies.length
+    pathname === '/saved-movies' ||
+    numberOfCards >= movies.length ||
+    (checkbox && numberOfCards >= savedMovies.length)
       ? 'cards__more-button_invisible'
       : '';
 
@@ -61,7 +63,6 @@ const MoviesCardList = ({
       // }}
     >
       <article className="cards__movies-list">
-
         {checkbox
           ? filteredPosts
               .slice(0, numberOfCards)
@@ -77,7 +78,7 @@ const MoviesCardList = ({
               ))
           : movies
               .slice(0, numberOfCards)
-              .map((movie) => ( 
+              .map((movie) => (
                 <MoviesCard
                   key={movie.movieId}
                   movie={movie}
@@ -85,12 +86,12 @@ const MoviesCardList = ({
                   onFavoriteMovie={onFavoriteMovie}
                   onFavoriteMovieDelete={onFavoriteMovieDelete}
                   savedMovies={savedMovies}
-                /> 
-              ))} 
+                />
+              ))}
       </article>
       <div className="cards__container-button">
         <button
-          className={`cards__more-button ${invisible} `}
+          className={`cards__more-button ${invisible}`}
           onClick={handleMoreButton}
         >
           Ещё

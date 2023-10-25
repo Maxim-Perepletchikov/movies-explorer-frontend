@@ -16,8 +16,8 @@ const Movies = ({
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [search, setSearch] = useState('');
   const [checkbox, setCheckbox] = useState(
-    localStorage.checkbox === 'false' ? false : true
-    // false
+    // localStorage.checkbox === 'false' ? false : true
+    !localStorage.checkbox || localStorage.checkbox === 'false' ? false : true
   );
 
   // const [numberOfCards, setNumberOfCards] = useState(0);
@@ -41,12 +41,8 @@ const Movies = ({
   }
 
   function handleGetMovies() {
-    // localStorage.removeItem('checkbox');
-    // localStorage.removeItem('posts');
-    // localStorage.removeItem('filteredPosts');
-    // localStorage.removeItem('search');
-
     let filtered = movies;
+    let filteredPost = movies;
 
     if (search) {
       const s = search.toLowerCase();
@@ -57,7 +53,6 @@ const Movies = ({
 
     setPosts(() => {
       localStorage.setItem('posts', JSON.stringify(filtered));
-      // console.log(movies[0], posts[0]);
 
       return filtered;
     });
@@ -69,20 +64,18 @@ const Movies = ({
     //   return filtered;
     // });
 
-    // let qwer;
-
     if (checkbox) {
-      filtered = filtered.filter((movie) => movie.duration < 40);
-      console.log(filtered);
+      filteredPost = filtered.filter((movie) => movie.duration < 40);
+      console.log(filteredPost);
       localStorage.setItem('checkbox', true);
     } else {
       localStorage.setItem('checkbox', false);
     }
 
     setFilteredPosts(() => {
-      localStorage.setItem('filteredPosts', JSON.stringify(filtered));
+      localStorage.setItem('filteredPosts', JSON.stringify(filteredPost));
       // console.log(filtered);
-      return filtered;
+      return filteredPost;
     });
 
     localStorage.setItem('checkbox', checkbox);
@@ -95,6 +88,10 @@ const Movies = ({
       filtered = filtered.filter((movie) => movie.duration < 40);
       localStorage.setItem('checkbox', true);
       setFilteredPosts(filtered);
+      // setFilteredPosts(() => {
+      //   localStorage.setItem('filteredPosts', JSON.stringify(filtered));
+      //   console.log(filtered);
+      //   return filtered;})
     } else {
       localStorage.setItem('checkbox', false);
       // console.log(filtered);
@@ -108,15 +105,24 @@ const Movies = ({
     // setFilteredPosts(filtered)
   }
 
-  // useEffect(() => {
-  //   newFunction(posts);
-  //   // handleGetMovies()
-  // }, [checkbox]);
+  useEffect(() => {
+    newFunction(posts);
+    // handleGetMovies()
+  }, [checkbox]);
 
-  // useEffect(() => {
-  //   setSearch(JSON.parse(localStorage.search));  // Поправить при
-  //   handleCheckbox();                            // первой инициализации
-  // }, []);
+  useEffect(() => {
+    if (
+      localStorage.search &&
+      localStorage.posts &&
+      localStorage.filteredPosts
+    ) {
+      setSearch(JSON.parse(localStorage.search));
+      setPosts(JSON.parse(localStorage.posts));
+      setFilteredPosts(JSON.parse(localStorage.filteredPosts));
+    }
+
+    // handleCheckbox();
+  }, []);
 
   return (
     <>
@@ -140,7 +146,7 @@ const Movies = ({
             onFavoriteMovieDelete={onFavoriteMovieDelete}
             // numberOfCards={numberOfCards}
             // setNumberOfCards={setNumberOfCards}
-          /> 
+          />
         </section>
       </main>
       <Footer />
