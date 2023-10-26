@@ -13,7 +13,6 @@ const Register = ({ onRegister }) => {
   const errorUser = errors.text ? 'form__error_visible' : '';
   const errorEmail = errors.email ? 'form__error_visible' : '';
   const errorPassword = errors.password ? 'form__error_visible' : '';
-  // console.log(values);
 
   return (
     <Form
@@ -37,22 +36,28 @@ const Register = ({ onRegister }) => {
           placeholder="Виталий"
           required
         />
-        <p className={`form__error ${errorUser}`}>{errors.text || 'Что то пошло не так...'}</p>
+        <p className={`form__error ${errorUser}`}>
+          {errors.text || 'Что то пошло не так...'}
+        </p>
       </label>
       <label className="form__item">
         <p className="form__item-text">E-mail</p>
         <input
-          className={`form__input ${errorEmail ? `form__input_color-error` : ''}`}
+          className={`form__input ${
+            errorEmail ? `form__input_color-error` : ''
+          }`}
           type="email"
           id="email"
           name="email"
           value={values.email || ''}
           onChange={handleChange}
           placeholder="pochta@yandex.ru"
-          pattern='^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$'
+          pattern="^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$"
           required
         />
-        <p className={`form__error ${errorEmail}`}>{errors.email || 'Что то пошло не так...'}</p>
+        <p className={`form__error ${errorEmail}`}>
+          {errors.email || 'Что то пошло не так...'}
+        </p>
       </label>
       <label className="form__item">
         <p className="form__item-text">Пароль</p>
@@ -68,7 +73,9 @@ const Register = ({ onRegister }) => {
           required
         />
         <p className={`form__error ${errorPassword}`}>
-          {errors.password || 'Что то пошло не так...'}
+          {errors.password === 'Введите данные в указанном формате.'
+            ? 'Длина пароля должна быть не менее 8 символов, содержать как минимум одну цифру и один символ (например: !#$%&?)'
+            : errors.password}
         </p>
       </label>
     </Form>
