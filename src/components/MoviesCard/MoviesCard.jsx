@@ -50,7 +50,7 @@ const MoviesCard = ({
         />
       </a>
       <div className="card__panel">
-        <h2 className="card__title">{movie.description}</h2>
+        <h2 className="card__title">{movie.nameRU}</h2>
         {pathname === '/saved-movies' ? (
           <button
             className="card__delete-button"
