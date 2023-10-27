@@ -18,20 +18,28 @@ const MoviesCardList = ({
   const [numberOfCards, setNumberOfCards] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  const [addCards, setAddCards] = useState(0)
+
   const { pathname } = useLocation();
 
   function initialCard() {
-    if (windowWidth >= 953) {
+    if (windowWidth >= 1235) {
       setNumberOfCards(16);
+      setAddCards(4)
+    } else if (windowWidth <= 1234 && windowWidth >= 951) {
+      setNumberOfCards(12);
+      setAddCards(3)
     } else if (windowWidth <= 950 && windowWidth >= 730) {
       setNumberOfCards(8);
+      setAddCards(2)
     } else if (windowWidth <= 729) {
       setNumberOfCards(5);
+      setAddCards(2)
     }
   }
 
   function handleMoreButton() {
-    setNumberOfCards(numberOfCards + (windowWidth <= 950 ? 2 : 4));
+    setNumberOfCards(numberOfCards + addCards);
   }
 
   const invisible =
@@ -42,7 +50,7 @@ const MoviesCardList = ({
       : '';
 
   useEffect(() => {
-    initialCard();
+    // initialCard();
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }
@@ -51,9 +59,10 @@ const MoviesCardList = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // useEffect(() => {
-  //   initialCard();
-  // }, []);
+  useEffect(() => {
+    initialCard();
+    // console.log(numberOfCards);
+  }, [windowWidth]);
 
   return (
     <section

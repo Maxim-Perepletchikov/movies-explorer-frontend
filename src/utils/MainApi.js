@@ -54,7 +54,10 @@ class MainApi {
   createMovie(movie) {
     return fetch(`${this._url}/movies`, {
       method: 'POST',
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
       body: JSON.stringify(movie),
     }).then(this._checkResponse);
   }
