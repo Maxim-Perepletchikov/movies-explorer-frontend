@@ -118,11 +118,11 @@ function App() {
   }
 
   function handleRegister(values) {
-    console.log(values);
+    // console.log(values);
     mainApi
       .register(values.text, values.email, values.password)
       .then(() => {
-        navigate('/movies');
+        handleLogin(values)
         console.log('Успешная регистрация');
       })
       .catch(console.log);
