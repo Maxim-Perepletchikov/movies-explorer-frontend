@@ -44,7 +44,10 @@ class MainApi {
   getMovies() {
     return fetch(`${this._url}/movies`, {
       method: 'GET',
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
     }).then(this._checkResponse);
   }
 
@@ -66,7 +69,10 @@ class MainApi {
   getInfoProfile() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
     }).then(this._checkResponse);
   }
 

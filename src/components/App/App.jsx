@@ -24,6 +24,21 @@ function App() {
 
   const navigate = useNavigate();
 
+  const tokenCheck = useCallback(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      mainApi
+        .getContent(jwt)
+        .then(() => {
+          setLoggedIn(true);
+          // navigate('/', { replace: true });
+        })
+        .catch(console.log);
+    }
+  }, []);
+
+  useEffect(() => tokenCheck(), []);
+
   useEffect(() => {
     if (loggedIn) {
       mainApi
@@ -36,8 +51,6 @@ function App() {
       moviesApi
         .getMovies()
         .then((data) => {
-          // console.log(data);
-          // console.log(data, typeof data, data[0].description);
           setMoviesCardList(
             data.map((card) => ({
               movieId: card.id,
@@ -79,24 +92,10 @@ function App() {
         })
         .catch(console.log);
       // console.log(savedMoviesCardList);
+      // navigate('/movies', { replace: true });
+
     }
   }, [loggedIn]);
-
-  const tokenCheck = useCallback(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      mainApi
-        .getContent(jwt)
-        .then(() => {
-          setLoggedIn(true);
-          // setUserEmail(res.data.email)
-          // navigate('/', { replace: true });
-        })
-        .catch(console.log);
-    }
-  }, []);
-
-  useEffect(() => tokenCheck(), []);
 
   function handleLogin(values) {
     mainApi
@@ -120,10 +119,13 @@ function App() {
 
   function handleRegister(values) {
     console.log(values);
-    mainApi.register(values.text, values.email, values.password).then(() => {
-      navigate('/movies');
-      console.log('Успешная регистрация');
-    });
+    mainApi
+      .register(values.text, values.email, values.password)
+      .then(() => {
+        navigate('/movies');
+        console.log('Успешная регистрация');
+      })
+      .catch(console.log);
   }
 
   function handleUpdateUser(userInfo) {
@@ -163,7 +165,9 @@ function App() {
       .deleteMovie(movie._id || movie.movieId)
       .then(() => {
         setSavedMoviesCardList((state) =>
-          state.filter((m) => m._id !== movie._id || m.movieId !== movie.movieId)
+          state.filter(
+            (m) => m._id !== movie._id || m.movieId !== movie.movieId
+          )
         );
       })
       .catch(console.log);
