@@ -62,14 +62,11 @@ const MoviesCardList = ({
   useEffect(() => {
     initialCard();
     // console.log(numberOfCards);
-  }, [windowWidth]);
+  }, [windowWidth, movies, filteredPosts]);
 
   return (
     <section
       className="cards"
-      // onClick={() => {
-      //   console.log(windowWidth);
-      // }}
     >
       <article className="cards__movies-list">
         {checkbox
