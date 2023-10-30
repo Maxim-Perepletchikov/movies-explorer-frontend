@@ -11,34 +11,11 @@ const SavedMovies = ({ movies, onFavoriteMovieDelete, savedMovies }) => {
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [search, setSearch] = useState('');
   const [checkbox, setCheckbox] = useState(
-    localStorage.checkbox === 'false' ? false : true
-    // false
+    // localStorage.checkbox === 'false' ? false : true
+    false
   );
 
-  function handleCheckbox() {
-    if (!localStorage.checkbox) {
-      localStorage.setItem('checkbox', false);
-    }
-
-    // return localStorage.checkbox === 'false' ? false : true
-    console.log(checkbox);
-    if (checkbox) {
-      // setFilteredPosts(JSON.parse(localStorage.getItem('filteredPosts')));
-      localStorage.setItem('checkbox', true);
-      console.log('localStorage => true');
-    } else {
-      // setPosts(JSON.parse(localStorage.getItem('posts')));
-      localStorage.setItem('checkbox', false);
-      console.log('localStorage => false');
-    }
-  }
-
   function handleGetMovies() {
-    // localStorage.removeItem('checkbox');
-    // localStorage.removeItem('posts');
-    // localStorage.removeItem('filteredPosts');
-    // localStorage.removeItem('search');
-
     let filtered = movies;
 
     if (search) {
@@ -66,9 +43,9 @@ const SavedMovies = ({ movies, onFavoriteMovieDelete, savedMovies }) => {
     if (checkbox) {
       filtered = filtered.filter((movie) => movie.duration < 40);
       console.log(filtered);
-      localStorage.setItem('checkbox', true);
+      // localStorage.setItem('checkbox', true);
     } else {
-      localStorage.setItem('checkbox', false);
+      // localStorage.setItem('checkbox', false);
     }
 
     setFilteredPosts(() => {
@@ -81,33 +58,14 @@ const SavedMovies = ({ movies, onFavoriteMovieDelete, savedMovies }) => {
     // localStorage.setItem('search', JSON.stringify(search));
   }
 
-  function newFunction(filtered) {
-    if (checkbox) {
-      filtered = filtered.filter((movie) => movie.duration < 40);
-      // localStorage.setItem('checkbox', true);
-      setFilteredPosts(filtered);
-    } else {
-      // localStorage.setItem('checkbox', false);
-      // console.log(filtered);
-      // setPosts(filtered);
-    }
-
-    // setFilteredPosts(() => {
-    //   localStorage.setItem('filteredPosts', JSON.stringify(filtered));
-    //   return filtered;
-    // });
-    // setFilteredPosts(filtered)
-  }
-
   useEffect(() => {
-    newFunction(posts);
-    // handleGetMovies()
+    handleGetMovies();
   }, [checkbox]);
 
   useEffect(() => {
     // setSearch(JSON.parse(localStorage.search)); // Поправить при
     // handleCheckbox(); // первой инициализации
-    setPosts(movies)
+    setPosts(movies);
   }, [movies]);
 
   return (

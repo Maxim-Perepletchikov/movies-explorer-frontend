@@ -20,26 +20,6 @@ const Movies = ({
     !localStorage.checkbox || localStorage.checkbox === 'false' ? false : true
   );
 
-  // const [numberOfCards, setNumberOfCards] = useState(0);
-
-  function handleCheckbox() {
-    if (!localStorage.checkbox) {
-      localStorage.setItem('checkbox', false);
-    }
-
-    // return localStorage.checkbox === 'false' ? false : true
-    console.log(checkbox);
-    if (checkbox) {
-      setFilteredPosts(JSON.parse(localStorage.getItem('filteredPosts')));
-      localStorage.setItem('checkbox', true);
-      console.log('localStorage => true');
-    } else {
-      setPosts(JSON.parse(localStorage.getItem('posts')));
-      localStorage.setItem('checkbox', false);
-      console.log('localStorage => false');
-    }
-  }
-
   function handleGetMovies() {
     let filtered = movies;
     let filteredPost = movies;
@@ -49,6 +29,10 @@ const Movies = ({
       filtered = filtered.filter((movie) =>
         movie.nameRU.toLowerCase().includes(s)
       );
+    } else {
+      // setPosts([]);
+      // setFilteredPosts([]);
+      return;
     }
 
     setPosts(() => {
@@ -56,13 +40,6 @@ const Movies = ({
 
       return filtered;
     });
-
-    // newFunction(filtered);
-
-    // setFilteredPosts(() => {
-    //   localStorage.setItem('filteredPosts', JSON.stringify(filtered));
-    //   return filtered;
-    // });
 
     if (checkbox) {
       filteredPost = filtered.filter((movie) => movie.duration < 40);
@@ -79,50 +56,28 @@ const Movies = ({
     });
 
     localStorage.setItem('checkbox', checkbox);
-    localStorage.setItem('search', JSON.stringify(search));
-    // setNumberOfCards()
-  }
-
-  function newFunction(filtered) {
-    if (checkbox) {
-      filtered = filtered.filter((movie) => movie.duration < 40);
-      localStorage.setItem('checkbox', true);
-      setFilteredPosts(filtered);
-      // setFilteredPosts(() => {
-      //   localStorage.setItem('filteredPosts', JSON.stringify(filtered));
-      //   console.log(filtered);
-      //   return filtered;})
-    } else {
-      localStorage.setItem('checkbox', false);
-      // console.log(filtered);
-      // setPosts(filtered);
-    }
-
-    // setFilteredPosts(() => {
-    //   localStorage.setItem('filteredPosts', JSON.stringify(filtered));
-    //   return filtered;
-    // });
-    // setFilteredPosts(filtered)
+    // localStorage.setItem('search', JSON.stringify(search));
+    localStorage.setItem('search', search);
   }
 
   useEffect(() => {
-    newFunction(posts);
-    // handleGetMovies()
-  }, [checkbox]);
-
-  useEffect(() => {
+    console.log(localStorage.search);
     if (
       localStorage.search &&
       localStorage.posts &&
       localStorage.filteredPosts
     ) {
-      setSearch(JSON.parse(localStorage.search));
+      setSearch(localStorage.search);
       setPosts(JSON.parse(localStorage.posts));
       setFilteredPosts(JSON.parse(localStorage.filteredPosts));
+      console.log(posts);
     }
-
-    // handleCheckbox();
   }, []);
+
+  useEffect(() => {
+    // newFunction(posts);
+    handleGetMovies();
+  }, [checkbox]);
 
   return (
     <>
@@ -144,8 +99,6 @@ const Movies = ({
             onCardClick={onCardClick}
             onFavoriteMovie={onFavoriteMovie}
             onFavoriteMovieDelete={onFavoriteMovieDelete}
-            // numberOfCards={numberOfCards}
-            // setNumberOfCards={setNumberOfCards}
           />
         </section>
       </main>
