@@ -7,7 +7,7 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -229,9 +229,20 @@ function App() {
           />
           <Route
             path="/signup"
-            element={<Register onRegister={handleRegister} />}
+            element={
+              !loggedIn ? (
+                <Register onRegister={handleRegister} />
+              ) : (
+                <Navigate to="/" />
+              )
+            }
           />
-          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+          <Route
+            path="/signin"
+            element={
+              !loggedIn ? <Login onLogin={handleLogin} /> : <Navigate to="/" />
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
