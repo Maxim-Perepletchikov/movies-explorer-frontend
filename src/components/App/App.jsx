@@ -93,7 +93,6 @@ function App() {
         .catch(console.log);
       // console.log(savedMoviesCardList);
       // navigate('/movies', { replace: true });
-
     }
   }, [loggedIn]);
 
@@ -122,7 +121,7 @@ function App() {
     mainApi
       .register(values.text, values.email, values.password)
       .then(() => {
-        handleLogin(values)
+        handleLogin(values);
         console.log('Успешная регистрация');
       })
       .catch(console.log);
